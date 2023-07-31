@@ -13,7 +13,7 @@ public class Loja {
 
     private String nome;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "endereco")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
     private List<Endereco> endereco;
 
     private double pedidoMinimo;

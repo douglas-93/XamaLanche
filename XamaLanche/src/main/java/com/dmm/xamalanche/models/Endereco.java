@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "endereco")
+@Table(name = "enderecos")
 public class Endereco {
 
     @Id
@@ -16,6 +16,9 @@ public class Endereco {
 
     @ManyToOne
     private Loja loja;
+
+    @ManyToOne
+    private Cliente cliente;
 
     private String rua;
 
@@ -28,7 +31,7 @@ public class Endereco {
     private String cep;
 
     @Version
-    private Integer versao;
+    private Integer versao = 0;
 
 
 
@@ -46,6 +49,14 @@ public class Endereco {
 
     public void setLoja(Loja loja) {
         this.loja = loja;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getRua() {

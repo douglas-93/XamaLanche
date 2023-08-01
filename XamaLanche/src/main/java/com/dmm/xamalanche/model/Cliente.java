@@ -16,9 +16,8 @@ public class Cliente {
 
     private String telefone;
 
-//    COMENTADO POIS ESTAVA GERANDO ERRO, REVER MAPEAMENTO
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
-//    private List<Endereco> endereco;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
+    private List<Endereco> endereco;
 
     @Version
     private Integer versao = 0;

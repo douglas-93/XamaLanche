@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "loja")
+@Table(name = "lojas")
 public class Loja {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,10 @@ public class Loja {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
     private List<Endereco> endereco;
 
-    private double pedidoMinimo;
+    private Double pedidoMinimo;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
+    private List<Cardapio> cardapio;
 
     @Version
     private Integer versao = 0;

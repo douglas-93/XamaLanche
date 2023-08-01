@@ -1,33 +1,29 @@
 package com.dmm.xamalanche.models;
 
 import jakarta.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "cardapios")
-public class Cardapio {
+@Table(name = "promocao")
+public class Promocao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    private String nome;
 
     private Boolean ativo;
 
     private Date dataAtivacao;
 
-    @ManyToOne
-    private Loja loja;
+    private Date dataValidade;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "promocao")
     private List<Produto> produtos;
 
     @Version
-    private Integer versao=0;
+    private Integer versao = 0;
 
     public Integer getId() {
         return id;
@@ -35,14 +31,6 @@ public class Cardapio {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public Boolean getAtivo() {
@@ -61,12 +49,12 @@ public class Cardapio {
         this.dataAtivacao = dataAtivacao;
     }
 
-    public Loja getLoja() {
-        return loja;
+    public Date getDataValidade() {
+        return dataValidade;
     }
 
-    public void setLoja(Loja loja) {
-        this.loja = loja;
+    public void setDataValidade(Date dataValidade) {
+        this.dataValidade = dataValidade;
     }
 
     public List<Produto> getProdutos() {
@@ -89,12 +77,12 @@ public class Cardapio {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Cardapio cardapio = (Cardapio) o;
-        return Objects.equals(id, cardapio.id) && Objects.equals(nome, cardapio.nome) && Objects.equals(ativo, cardapio.ativo) && Objects.equals(dataAtivacao, cardapio.dataAtivacao) && Objects.equals(loja, cardapio.loja) && Objects.equals(produtos, cardapio.produtos);
+        Promocao promocao = (Promocao) o;
+        return Objects.equals(id, promocao.id) && Objects.equals(ativo, promocao.ativo) && Objects.equals(dataAtivacao, promocao.dataAtivacao) && Objects.equals(dataValidade, promocao.dataValidade) && Objects.equals(produtos, promocao.produtos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, ativo, dataAtivacao, loja, produtos);
+        return Objects.hash(id, ativo, dataAtivacao, dataValidade, produtos);
     }
 }

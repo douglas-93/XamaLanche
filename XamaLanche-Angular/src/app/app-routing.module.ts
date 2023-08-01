@@ -6,8 +6,26 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
+import { LojaComponent } from './pages/loja/loja.component';
+import { ProdutoComponent } from './pages/produto/produto.component';
+import { CardapioComponent } from './pages/cardapio/cardapio.component';
 
 const routes: Routes = [
+  {
+    path: 'pages/cardapio',
+    component: CardapioComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'pages/produto',
+    component: ProdutoComponent,
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'pages/loja',
+    component: LojaComponent,
+    canActivate: [ AuthGuardService ]
+  },
   {
     path: 'tasks',
     component: TasksComponent,
@@ -56,7 +74,10 @@ const routes: Routes = [
   declarations: [
     HomeComponent,
     ProfileComponent,
-    TasksComponent
+    TasksComponent,
+    LojaComponent,
+    ProdutoComponent,
+    CardapioComponent
   ]
 })
 export class AppRoutingModule { }

@@ -1,4 +1,4 @@
-package com.dmm.xamalanche.models;
+package com.dmm.xamalanche.model;
 
 import jakarta.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.dmm.xamalanche.models;
+package com.dmm.xamalanche.model;
 
 import jakarta.persistence.*;
 
@@ -27,7 +27,7 @@ public class Produto {
     @ManyToOne
     private Promocao promocao;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "produtos")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "produto")
     private List<Acrescimo> acrescimos;
 
     @ManyToOne

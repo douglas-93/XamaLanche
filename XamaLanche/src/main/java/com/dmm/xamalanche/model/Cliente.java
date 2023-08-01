@@ -1,4 +1,4 @@
-package com.dmm.xamalanche.models;
+package com.dmm.xamalanche.model;
 
 import jakarta.persistence.*;
 
@@ -16,8 +16,9 @@ public class Cliente {
 
     private String telefone;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
-    private List<Endereco> endereco;
+//    COMENTADO POIS ESTAVA GERANDO ERRO, REVER MAPEAMENTO
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
+//    private List<Endereco> endereco;
 
     @Version
     private Integer versao = 0;
@@ -47,13 +48,13 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public List<Endereco> getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(List<Endereco> endereco) {
-        this.endereco = endereco;
-    }
+//    public List<Endereco> getEndereco() {
+//        return endereco;
+//    }
+//
+//    public void setEndereco(List<Endereco> endereco) {
+//        this.endereco = endereco;
+//    }
 
     public Integer getVersao() {
         return versao;
@@ -68,11 +69,11 @@ public class Cliente {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cliente cliente = (Cliente) o;
-        return Objects.equals(id, cliente.id) && Objects.equals(nome, cliente.nome) && Objects.equals(telefone, cliente.telefone) && Objects.equals(endereco, cliente.endereco);
+        return Objects.equals(id, cliente.id) && Objects.equals(nome, cliente.nome) && Objects.equals(telefone, cliente.telefone) ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, telefone, endereco);
+        return Objects.hash(id, nome, telefone);
     }
 }

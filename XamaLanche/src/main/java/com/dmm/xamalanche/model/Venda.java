@@ -1,4 +1,4 @@
-package com.dmm.xamalanche.models;
+package com.dmm.xamalanche.model;
 
 import com.dmm.xamalanche.enums.FormaPagamento;
 import jakarta.persistence.*;
@@ -16,7 +16,7 @@ public class Venda {
 
     private BigDecimal Valor;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "vendas")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "venda")
     private List<Produto> produtos;
 
     @OneToOne

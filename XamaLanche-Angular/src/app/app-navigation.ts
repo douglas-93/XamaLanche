@@ -17,5 +17,20 @@ export const navigation = [
         path: '/tasks'
       }
     ]
+  },
+  {
+    text: 'Loja',
+    path: '/pages/loja',
+    icon: 'card'
+  },
+  {
+    text: 'Produto',
+    path: '/pages/produto',
+    icon: 'food'
+  },
+  {
+    text: 'Cardapio',
+    path: '/pages/cardapio',
+    icon: 'product'
   }
 ];

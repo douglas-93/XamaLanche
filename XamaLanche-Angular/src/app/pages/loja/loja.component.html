@@ -1,4 +1,34 @@
 <h2 class="content-block">Loja</h2>
 <div class="content-block">
-    <div class="dx-card responsive-paddings">Put your content here</div>
+  <dx-button
+    text="Buscar"
+    icon="filter"
+    (onClick)="buscarLojas()">
+  </dx-button>
+  <dx-data-grid
+    [dataSource]="lojas">
+    <dxo-editing mode="popup"
+                 [allowUpdating]="true"
+                 [allowDeleting]="true">
+<!--      Verificar   -->
+      <dxo-popup>
+        <dx-form>
+          <dxi-item dataField="nome"></dxi-item>
+          <dxi-item dataField="pedidoMinimo"></dxi-item>
+        </dx-form>
+      </dxo-popup>
+
+
+    </dxo-editing>
+    <dxi-column dataField="id" [visible]="false"></dxi-column>
+    <dxi-column dataField="nome"></dxi-column>
+    <dxi-column dataField="pedidoMinimo" cellTemplate="pedidoMinimoTemplate"></dxi-column>
+    <dxi-column dataField="versao"></dxi-column>
+
+    <!--    Templates   -->
+    <div *dxTemplate="let data of 'pedidoMinimoTemplate'">
+      {{ data.value ? 'R$ ' + data.value.toFixed(2) : ''}}
+    </div>
+
+  </dx-data-grid>
 </div>

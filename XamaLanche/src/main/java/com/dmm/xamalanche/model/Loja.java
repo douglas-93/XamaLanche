@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "lojas")
+@Table(name = "loja")
 public class Loja {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,13 +13,13 @@ public class Loja {
 
     private String nome;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
-    private List<Endereco> endereco;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
+//    private List<Endereco> endereco;
 
     private Double pedidoMinimo;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
-    private List<Cardapio> cardapio;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
+//    private List<Cardapio> cardapio;
 
     @Version
     private Integer versao = 0;
@@ -40,13 +40,13 @@ public class Loja {
         this.nome = nome;
     }
 
-    public List<Endereco> getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(List<Endereco> endereco) {
-        this.endereco = endereco;
-    }
+//    public List<Endereco> getEndereco() {
+//        return endereco;
+//    }
+//
+//    public void setEndereco(List<Endereco> endereco) {
+//        this.endereco = endereco;
+//    }
 
     public double getPedidoMinimo() {
         return pedidoMinimo;
@@ -56,13 +56,13 @@ public class Loja {
         this.pedidoMinimo = pedidoMinimo;
     }
 
-    public List<Cardapio> getCardapio() {
-        return cardapio;
-    }
-
-    public void setCardapio(List<Cardapio> cardapio) {
-        this.cardapio = cardapio;
-    }
+//    public List<Cardapio> getCardapio() {
+//        return cardapio;
+//    }
+//
+//    public void setCardapio(List<Cardapio> cardapio) {
+//        this.cardapio = cardapio;
+//    }
 
     public Integer getVersao() {
         return versao;
@@ -72,16 +72,16 @@ public class Loja {
         this.versao = versao;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Loja loja = (Loja) o;
-        return Objects.equals(id, loja.id) && Objects.equals(nome, loja.nome) && Objects.equals(endereco, loja.endereco) && Objects.equals(pedidoMinimo, loja.pedidoMinimo) && Objects.equals(cardapio, loja.cardapio);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, nome, endereco, pedidoMinimo, cardapio);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Loja loja = (Loja) o;
+//        return Objects.equals(id, loja.id) && Objects.equals(nome, loja.nome) && Objects.equals(endereco, loja.endereco) && Objects.equals(pedidoMinimo, loja.pedidoMinimo) && Objects.equals(cardapio, loja.cardapio);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, nome, endereco, pedidoMinimo, cardapio);
+//    }
 }

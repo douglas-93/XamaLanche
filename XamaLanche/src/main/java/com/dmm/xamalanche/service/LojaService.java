@@ -41,10 +41,9 @@ public class LojaService implements BaseCrudService<Loja, Integer> {
 
     public void updateEntity(Loja lojaAtualizada, Loja loja) {
         loja.setNome(lojaAtualizada.getNome());
-        loja.setCardapio(lojaAtualizada.getCardapio());
-        loja.setEndereco(lojaAtualizada.getEndereco());
+//        loja.setCardapio(lojaAtualizada.getCardapio());
+//        loja.setEndereco(lojaAtualizada.getEndereco());
         loja.setPedidoMinimo(loja.getPedidoMinimo());
-        loja.setVersao(loja.getVersao());
     }
 
 }

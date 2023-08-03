@@ -1,0 +1,37 @@
+<div *ngIf="!cadastro" class="container">
+	<dx-button
+		(onClick)="filtrarEnv($event)"
+		icon="refresh"
+		text="Buscar">
+	</dx-button>
+	<dx-button
+		(onClick)="novoCadEnv($event)"
+		icon="add"
+		text="Novo">
+	</dx-button>
+	<dx-button
+		*ngIf="!desativarBotaoFechar"
+		(onClick)="voltar()"
+		icon="close"
+		text="Fechar">
+	</dx-button>
+</div>
+<div *ngIf="cadastro" class="container">
+	<dx-button
+		(onClick)="salvaEnv($event)"
+		icon="save"
+		text="Salvar">
+	</dx-button>
+	<dx-button
+		(onClick)="deleteEnv($event)"
+		*ngIf="edit"
+		icon="trash"
+		text="Excluir">
+	</dx-button>
+	<dx-button
+		*ngIf="!desativarBotaoFechar"
+		(onClick)="voltar()"
+		icon="close"
+		text="Fechar">
+	</dx-button>
+</div>

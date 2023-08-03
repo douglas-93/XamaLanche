@@ -31,13 +31,13 @@ public class LojaResource {
 
     @PostMapping
     public ResponseEntity<Loja> create(@RequestBody Loja novaLoja) {
-        Loja loja = lojaService.create(novaLoja);
+        Loja loja = lojaService.createOrUpdate(novaLoja);
         return ResponseEntity.status(HttpStatus.CREATED).body(loja);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Loja> update(@PathVariable Integer id, @RequestBody Loja lojaAtualizada) {
-        Loja loja = lojaService.update(lojaAtualizada, id);
+    public ResponseEntity<Loja> update(@RequestBody Loja lojaAtualizada) {
+        Loja loja = lojaService.createOrUpdate(lojaAtualizada);
         return ResponseEntity.status(HttpStatus.OK).body(loja);
     }
 

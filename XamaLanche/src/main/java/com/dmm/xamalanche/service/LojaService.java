@@ -24,26 +24,13 @@ public class LojaService implements BaseCrudService<Loja, Integer> {
         return repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Loja não encontrada!"));
     }
 
-    public Loja create(Loja loja) {
+    public Loja createOrUpdate(Loja loja) {
         return repository.save(loja);
     }
 
     public void delete(Integer id) {
         Loja loja = this.findById(id);
         repository.delete(loja);
-    }
-
-    public Loja update(Loja lojaAtualizada, Integer id) {
-        Loja loja = this.findById(id);
-        updateEntity(lojaAtualizada, loja);
-        return repository.save(loja);
-    }
-
-    public void updateEntity(Loja lojaAtualizada, Loja loja) {
-        loja.setNome(lojaAtualizada.getNome());
-//        loja.setCardapio(lojaAtualizada.getCardapio());
-//        loja.setEndereco(lojaAtualizada.getEndereco());
-        loja.setPedidoMinimo(loja.getPedidoMinimo());
     }
 
 }

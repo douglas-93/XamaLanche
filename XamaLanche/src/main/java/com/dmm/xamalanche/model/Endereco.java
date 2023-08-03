@@ -30,6 +30,8 @@ public class Endereco {
 
     private String cep;
 
+    private String numero;
+
     @Version
     private Integer versao = 0;
 
@@ -97,6 +99,14 @@ public class Endereco {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public Integer getVersao() {

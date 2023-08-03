@@ -5,12 +5,19 @@ import { AuthGuardService } from './shared/services';
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
-import {DxButtonModule, DxDataGridModule, DxFormModule} from 'devextreme-angular';
+import {DxButtonModule, DxDataGridModule, DxFormModule, DxTextBoxModule} from 'devextreme-angular';
 import { LojaComponent } from './pages/loja/loja.component';
 import { ProdutoComponent } from './pages/produto/produto.component';
 import { CardapioComponent } from './pages/cardapio/cardapio.component';
+import { ClienteComponent } from './pages/cliente/cliente.component';
+import {ToolbarModule} from "./shared/components/toolbar/toolbar.component";
 
 const routes: Routes = [
+  {
+    path: 'pages/cliente',
+    component: ClienteComponent,
+    canActivate: [ AuthGuardService ]
+  },
   {
     path: 'pages/cardapio',
     component: CardapioComponent,
@@ -68,7 +75,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {useHash: true}), DxDataGridModule, DxFormModule, DxButtonModule],
+  imports: [RouterModule.forRoot(routes, {useHash: true}), DxDataGridModule, DxFormModule, DxButtonModule, ToolbarModule, DxTextBoxModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [
@@ -77,7 +84,8 @@ const routes: Routes = [
     TasksComponent,
     LojaComponent,
     ProdutoComponent,
-    CardapioComponent
+    CardapioComponent,
+    ClienteComponent
   ]
 })
 export class AppRoutingModule { }

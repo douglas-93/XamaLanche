@@ -4,7 +4,7 @@ export const navigation = [
     path: '/home',
     icon: 'home'
   },
-  {
+/*  {
     text: 'Examples',
     icon: 'folder',
     items: [
@@ -17,7 +17,7 @@ export const navigation = [
         path: '/tasks'
       }
     ]
-  },
+  },*/
   {
     text: 'Loja',
     path: '/pages/loja',
@@ -32,5 +32,10 @@ export const navigation = [
     text: 'Cardapio',
     path: '/pages/cardapio',
     icon: 'product'
+  },
+  {
+    text: 'Cliente',
+    path: '/pages/cliente',
+    icon: 'user'
   }
 ];

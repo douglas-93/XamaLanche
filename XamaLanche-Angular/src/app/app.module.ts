@@ -9,6 +9,7 @@ import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import {LojaService} from "./shared/services/loja.service";
+import {ClienteService} from "./shared/services/cliente.service";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {LojaService} from "./shared/services/loja.service";
     AuthService,
     ScreenService,
     AppInfoService,
-    LojaService
+    LojaService,
+    ClienteService
   ],
   bootstrap: [AppComponent]
 })

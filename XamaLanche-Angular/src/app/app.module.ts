@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import {LojaService} from "./shared/services/loja.service";
 import {ClienteService} from "./shared/services/cliente.service";
+import {CepService} from "./shared/services/cep.service";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {ClienteService} from "./shared/services/cliente.service";
     AuthService,
     ScreenService,
     AppInfoService,
+    CepService,
     LojaService,
     ClienteService
   ],

@@ -37,5 +37,5 @@ export const navigation = [
     text: 'Cliente',
     path: '/pages/cliente',
     icon: 'user'
-  }
+  },
 ];

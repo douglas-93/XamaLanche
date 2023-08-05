@@ -26,6 +26,6 @@ export class ClienteComponent {
   }
 
   novoCliente() {
-    this.router.navigate([])
+    this.router.navigate(['pages', 'cliente-form'])
   }
 }

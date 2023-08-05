@@ -11,8 +11,14 @@ import { ProdutoComponent } from './pages/produto/produto.component';
 import { CardapioComponent } from './pages/cardapio/cardapio.component';
 import { ClienteComponent } from './pages/cliente/cliente.component';
 import {ToolbarModule} from "./shared/components/toolbar/toolbar.component";
+import { ClienteFormComponent } from './pages/cliente-form/cliente-form.component';
 
 const routes: Routes = [
+  {
+    path: 'pages/cliente-form',
+    component: ClienteFormComponent,
+    canActivate: [ AuthGuardService ]
+  },
   {
     path: 'pages/cliente',
     component: ClienteComponent,
@@ -85,7 +91,8 @@ const routes: Routes = [
     LojaComponent,
     ProdutoComponent,
     CardapioComponent,
-    ClienteComponent
+    ClienteComponent,
+    ClienteFormComponent
   ]
 })
 export class AppRoutingModule { }

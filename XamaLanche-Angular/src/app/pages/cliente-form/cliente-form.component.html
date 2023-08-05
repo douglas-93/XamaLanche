@@ -1,0 +1,107 @@
+<h2 class="content-block">Cadastro de Clientes</h2>
+<div class="content-block">
+  <div class="dx-card responsive-paddings">
+
+    <app-toolbar
+      (salvar)="salvarCliente()"
+      [cadastro]="true"
+      class="margem">
+    </app-toolbar>
+
+    <dx-form #formularioCliente
+             [(formData)]="cliente">
+
+      <dxi-item [colCount]="2" itemType="group">
+
+        <dxi-item caption="Dados Pessoais" itemType="group">
+
+          <dxi-item dataField="nome" template="nomeTemplate">
+            <dxo-label [visible]="false"></dxo-label>
+            <dxi-validation-rule message="O necessário informar o nome do cliente"
+                                 type="required">
+            </dxi-validation-rule>
+            <dxi-validation-rule message="O nome não pode conter números ou caracteres especiais"
+                                 pattern="^[a-zA-Z]+$"
+                                 type="pattern">
+            </dxi-validation-rule>
+          </dxi-item>
+
+          <dxi-item dataField="telefone" template="telefoneTemplate">
+            <dxo-label [visible]="false"></dxo-label>
+            <dxi-validation-rule message="É necessário informar um número para contato"
+                                 type="required">
+            </dxi-validation-rule>
+          </dxi-item>
+        </dxi-item>
+
+
+        <dxi-item caption="Endereço" itemType="group">
+
+          <dxi-item dataField="endereco" template="enderecoTemplate">
+            <dxo-label [visible]="false"></dxo-label>
+          </dxi-item>
+        </dxi-item>
+      </dxi-item>
+
+      <!--      TEMPLATES   -->
+      <div *dxTemplate="let data of 'nomeTemplate'">
+        <dx-text-box label="Nome">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'telefoneTemplate'">
+        <dx-text-box label="Telefone"
+                     mask="(00) 00000-0000">
+        </dx-text-box>
+      </div>
+
+      <div *dxTemplate="let data of 'enderecoTemplate'">
+        <div class="endereco">
+          <dx-text-box (onChange)="buscaCep($event)"
+                       [(value)]="endereco.cep"
+                       label="CEP"
+                       mask="00.000-000"
+                       width="200px">
+            <dxi-validation-rule message="O CEP é inválido"
+                                 type="required">
+            </dxi-validation-rule>
+          </dx-text-box>
+
+          <div class="linha">
+            <dx-text-box [(value)]="endereco.rua"
+                         class="margem"
+                         label="Rua"
+                         width="80%">
+            </dx-text-box>
+
+            <dx-text-box [(value)]="endereco.numero"
+                         class="margem"
+                         label="Número"
+                         width="20%">
+            </dx-text-box>
+          </div>
+
+          <div class="linha">
+            <dx-text-box [(value)]="endereco.bairro"
+                         class="margem"
+                         label="Bairro"
+                         width="60%">
+            </dx-text-box>
+
+            <dx-text-box [(value)]="endereco.cidade"
+                         class="margem"
+                         label="Cidade"
+                         width="20%">
+            </dx-text-box>
+
+            <dx-text-box [(value)]="endereco.estado"
+                         class="margem"
+                         label="Estado"
+                         width="10%">
+            </dx-text-box>
+          </div>
+        </div>
+      </div>
+    </dx-form>
+  </div>
+</div>

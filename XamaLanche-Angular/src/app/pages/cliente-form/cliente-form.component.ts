@@ -4,6 +4,7 @@ import {CepService} from "../../shared/services/cep.service";
 import {ChangeEvent} from "devextreme/ui/text_box";
 import {Endereco} from "../../shared/models/endereco";
 import {DxFormComponent} from "devextreme-angular";
+import notify from "devextreme/ui/notify";
 
 @Component({
     selector: 'app-cliente-form',
@@ -13,6 +14,7 @@ import {DxFormComponent} from "devextreme-angular";
 export class ClienteFormComponent {
 
     @ViewChild('formularioCliente') formularioCliente: DxFormComponent;
+    @ViewChild('formularioEndereco') formularioEndereco: DxFormComponent;
 
     cliente: Cliente;
     endereco: Endereco;
@@ -38,6 +40,8 @@ export class ClienteFormComponent {
     }
 
     salvarCliente() {
-        this.formularioCliente.instance.validate()
+        this.formularioCliente.instance.validate();
+        this.formularioEndereco.instance.validate();
+        notify('Por favor, preencha os dados que estão faltando', 'error', 3000);
     }
 }

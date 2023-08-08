@@ -18,7 +18,7 @@ export class ClienteComponent {
   }
 
   buscaClientes() {
-    this.clienteService.getCliente().subscribe(res => {
+    this.clienteService.getAll().subscribe(res => {
       if (res.ok) {
         this.clientes = res.body!
       }

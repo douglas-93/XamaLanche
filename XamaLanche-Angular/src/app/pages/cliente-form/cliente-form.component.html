@@ -1,135 +1,138 @@
 <h2 class="content-block">Cadastro de Clientes</h2>
 <div class="content-block">
-    <div class="dx-card responsive-paddings">
+  <div class="dx-card responsive-paddings">
 
-        <app-toolbar
-            (salvar)="salvarCliente()"
-            [cadastro]="true"
-            class="margem">
-        </app-toolbar>
+    <app-toolbar
+      (salvar)="salvarCliente()"
+      [cadastro]="true"
+      class="margem">
+    </app-toolbar>
 
-        <div class="formularios">
-            <dx-form #formularioCliente
-                     [(formData)]="cliente"
-                     class="formulario">
-                <dxi-item caption="Dados do Cliente" itemType="group">
-                    <dxi-item dataField="nome" template="nomeTemplate">
-                        <dxo-label [visible]="false"></dxo-label>
-                        <dxi-validation-rule message="O necessário informar o nome do cliente"
-                                             type="required">
-                        </dxi-validation-rule>
-                        <dxi-validation-rule message="O nome não pode conter números ou caracteres especiais"
-                                             pattern="^[a-zA-Z]+$"
-                                             type="pattern">
-                        </dxi-validation-rule>
-                    </dxi-item>
+    <div class="formularios">
+      <dx-form #formularioCliente
+               [(formData)]="cliente"
+               class="formulario">
+        <dxi-item caption="Dados do Cliente" itemType="group">
+          <dxi-item dataField="nome"
+                    template="nomeTemplate"
+                    [isRequired]=" true"
+                    [label]="{visible:false}">
+            <!--                        <dxo-label [visible]="false"></dxo-label>-->
+            <!--                        <dxi-validation-rule message="O necessário informar o nome do cliente"-->
+            <!--                                             type="required">-->
+            <!--                        </dxi-validation-rule>-->
+            <!--                        <dxi-validation-rule message="O nome não pode conter números ou caracteres especiais"-->
+            <!--                                             pattern="^[a-zA-Z]+$"-->
+            <!--                                             type="pattern">-->
+            <!--                        </dxi-validation-rule>-->
+          </dxi-item>
 
-                    <dxi-item dataField="telefone" template="telefoneTemplate">
-                        <dxo-label [visible]="false"></dxo-label>
-                        <dxi-validation-rule message="É necessário informar um número para contato"
-                                             type="required">
-                        </dxi-validation-rule>
-                    </dxi-item>
-                </dxi-item>
+          <dxi-item dataField="telefone" template="telefoneTemplate">
+            <dxo-label [visible]="false"></dxo-label>
+            <dxi-validation-rule message="É necessário informar um número para contato"
+                                 type="required">
+            </dxi-validation-rule>
+          </dxi-item>
+        </dxi-item>
 
-                <!--      TEMPLATES   -->
-                <div *dxTemplate="let data of 'nomeTemplate'">
-                    <dx-text-box label="Nome">
-                    </dx-text-box>
-                </div>
-
-                <div *dxTemplate="let data of 'telefoneTemplate'">
-                    <dx-text-box label="Telefone"
-                                 mask="(00) 00000-0000">
-                    </dx-text-box>
-                </div>
-            </dx-form>
-
-            <dx-form #formularioEndereco
-                     [(formData)]="endereco"
-                     class="formulario">
-
-                <dxi-item caption="Endereço" itemType="group">
-                    <dxi-item [colCount]="3" itemType="group">
-                        <dxi-item dataField="cep" template="cepTemplate">
-                            <dxo-label [visible]="false"></dxo-label>
-                            <dxi-validation-rule message="O necessário informar o CEP do cliente"
-                                                 type="required">
-                            </dxi-validation-rule>
-                        </dxi-item>
-                    </dxi-item>
-                    <dxi-item [colCount]="3" itemType="group">
-                        <dxi-item [colSpan]="2" dataField="rua" template="ruaTemplate">
-                            <dxo-label [visible]="false"></dxo-label>
-                            <dxi-validation-rule message="O necessário informar a rua do cliente"
-                                                 type="required">
-                            </dxi-validation-rule>
-                        </dxi-item>
-                        <dxi-item dataField="numero" template="numeroTemplate">
-                            <dxo-label [visible]="false"></dxo-label>
-                            <dxi-validation-rule message="O necessário informar o número do cliente"
-                                                 type="required">
-                            </dxi-validation-rule>
-                        </dxi-item>
-                    </dxi-item>
-
-                    <dxi-item [colCount]="5" itemType="group">
-                        <dxi-item [colSpan]="2" dataField="bairro" template="bairroTemplate">
-                            <dxo-label [visible]="false"></dxo-label>
-                            <dxi-validation-rule message="O necessário informar o bairro do cliente"
-                                                 type="required">
-                            </dxi-validation-rule>
-                        </dxi-item>
-                        <dxi-item [colSpan]="2" dataField="cidade" template="cidadeTemplate">
-                            <dxo-label [visible]="false"></dxo-label>
-                            <dxi-validation-rule message="O necessário informar a cidade do cliente"
-                                                 type="required">
-                            </dxi-validation-rule>
-                        </dxi-item>
-                        <dxi-item dataField="estado" template="estadoTemplate">
-                            <dxo-label [visible]="false"></dxo-label>
-                            <dxi-validation-rule message="O necessário informar o estado do cliente"
-                                                 type="required">
-                            </dxi-validation-rule>
-                        </dxi-item>
-                    </dxi-item>
-                </dxi-item>
-
-                <!--        ENDEREÇO TEMPLATE       -->
-
-                <div *dxTemplate="let data of 'cepTemplate'">
-                    <dx-text-box (onChange)="buscaCep($event)"
-                                 label="CEP"
-                                 mask="00.000-000">
-                    </dx-text-box>
-                </div>
-                <div *dxTemplate="let data of 'ruaTemplate'">
-                    <dx-text-box [(value)]="endereco.rua"
-                                 label="Rua">
-                    </dx-text-box>
-                </div>
-                <div *dxTemplate="let data of 'numeroTemplate'">
-                    <dx-text-box [(value)]="endereco.numero"
-                                 label="Número">
-                    </dx-text-box>
-                </div>
-
-                <div *dxTemplate="let data of 'bairroTemplate'">
-                    <dx-text-box [(value)]="endereco.bairro"
-                                 label="Bairro">
-                    </dx-text-box>
-                </div>
-                <div *dxTemplate="let data of 'cidadeTemplate'">
-                    <dx-text-box [(value)]="endereco.cidade"
-                                 label="Cidade">
-                    </dx-text-box>
-                </div>
-                <div *dxTemplate="let data of 'estadoTemplate'">
-                    <dx-text-box [(value)]="endereco.estado"
-                                 label="Estado">
-                    </dx-text-box>
-                </div>
-            </dx-form>
+        <!--      TEMPLATES   -->
+        <div *dxTemplate="let data of 'nomeTemplate'">
+          <dx-text-box label="Nome">
+          </dx-text-box>
         </div>
+
+        <div *dxTemplate="let data of 'telefoneTemplate'">
+          <dx-text-box label="Telefone"
+                       mask="(00) 00000-0000">
+          </dx-text-box>
+        </div>
+      </dx-form>
+
+      <dx-form #formularioEndereco
+               [(formData)]="endereco"
+               class="formulario">
+
+        <dxi-item caption="Endereço" itemType="group">
+          <dxi-item [colCount]="3" itemType="group">
+            <dxi-item dataField="cep" template="cepTemplate">
+              <dxo-label [visible]="false"></dxo-label>
+              <dxi-validation-rule message="O necessário informar o CEP do cliente"
+                                   type="required">
+              </dxi-validation-rule>
+            </dxi-item>
+          </dxi-item>
+          <dxi-item [colCount]="3" itemType="group">
+            <dxi-item [colSpan]="2" dataField="rua" template="ruaTemplate">
+              <dxo-label [visible]="false"></dxo-label>
+              <dxi-validation-rule message="O necessário informar a rua do cliente"
+                                   type="required">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="numero" template="numeroTemplate">
+              <dxo-label [visible]="false"></dxo-label>
+              <dxi-validation-rule message="O necessário informar o número do cliente"
+                                   type="required">
+              </dxi-validation-rule>
+            </dxi-item>
+          </dxi-item>
+
+          <dxi-item [colCount]="5" itemType="group">
+            <dxi-item [colSpan]="2" dataField="bairro" template="bairroTemplate">
+              <dxo-label [visible]="false"></dxo-label>
+              <dxi-validation-rule message="O necessário informar o bairro do cliente"
+                                   type="required">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item [colSpan]="2" dataField="cidade" template="cidadeTemplate">
+              <dxo-label [visible]="false"></dxo-label>
+              <dxi-validation-rule message="O necessário informar a cidade do cliente"
+                                   type="required">
+              </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="estado" template="estadoTemplate">
+              <dxo-label [visible]="false"></dxo-label>
+              <dxi-validation-rule message="O necessário informar o estado do cliente"
+                                   type="required">
+              </dxi-validation-rule>
+            </dxi-item>
+          </dxi-item>
+        </dxi-item>
+
+        <!--        ENDEREÇO TEMPLATE       -->
+
+        <div *dxTemplate="let data of 'cepTemplate'">
+          <dx-text-box (onChange)="buscaCep($event)"
+                       label="CEP"
+                       mask="00.000-000">
+          </dx-text-box>
+        </div>
+        <div *dxTemplate="let data of 'ruaTemplate'">
+          <dx-text-box [(value)]="endereco.rua"
+                       label="Rua">
+          </dx-text-box>
+        </div>
+        <div *dxTemplate="let data of 'numeroTemplate'">
+          <dx-text-box [(value)]="endereco.numero"
+                       label="Número">
+          </dx-text-box>
+        </div>
+
+        <div *dxTemplate="let data of 'bairroTemplate'">
+          <dx-text-box [(value)]="endereco.bairro"
+                       label="Bairro">
+          </dx-text-box>
+        </div>
+        <div *dxTemplate="let data of 'cidadeTemplate'">
+          <dx-text-box [(value)]="endereco.cidade"
+                       label="Cidade">
+          </dx-text-box>
+        </div>
+        <div *dxTemplate="let data of 'estadoTemplate'">
+          <dx-text-box [(value)]="endereco.estado"
+                       label="Estado">
+          </dx-text-box>
+        </div>
+      </dx-form>
     </div>
+  </div>
 </div>

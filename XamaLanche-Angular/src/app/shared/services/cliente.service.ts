@@ -1,16 +1,13 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Loja} from "../models/loja";
 import {Cliente} from "../models/cliente";
+import {AbstractCRUDService} from "./abstractCRUD.service";
 
 @Injectable()
-export class ClienteService {
-  url: string = 'http://localhost:8080/cliente';
+export class ClienteService extends AbstractCRUDService<Cliente> {
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(http: HttpClient) {
+        super(http, 'clientes');
+    }
 
-  getCliente() {
-    return this.http.get<Cliente[]>(`${this.url}`, {observe: 'response'});
-  }
 }

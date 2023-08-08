@@ -1,14 +1,12 @@
-import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 
-@Injectable()
-export class AbstractCRUDService<T> {
+// @Injectable() - Não pode ser injetável, suas filhas serão
+export abstract class AbstractCRUDService<T> {
 
     url: string = 'http://localhost:8080/'
 
-    constructor(path: string,
-                private http: HttpClient) {
-        this.url = this.url + path
+    constructor(private http: HttpClient, private path: string) {
+        this.url = this.url + path;
     }
 
     getAll() {

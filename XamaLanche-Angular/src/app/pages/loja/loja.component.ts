@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LojaService} from "../../shared/services/loja.service";
 import {Loja} from "../../shared/models/loja";
-import {ModeEnum} from "../../shared/enum/modeEnum";
+import {ModeEnum} from "../../shared/enum/mode.enum";
 import {Router} from "@angular/router";
 
 @Component({

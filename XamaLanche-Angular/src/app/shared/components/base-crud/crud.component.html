@@ -1,0 +1,76 @@
+<div>
+
+  <!------------------- LIST CRUD TEMPLATE -------------------->
+
+  <div *ngIf="mode === modes.List">
+    <h2 class="content-block">{{listToolbarTitle}}</h2>
+    <div class="content-block">
+      <div class="dx-card responsive-paddings">
+        <div class="container">
+          <dx-button
+            (onClick)="filtrarEnv($event)"
+            [icon]="listToolbarFilterButtonIconClass"
+            [text]="listToolbarFilterButtonText"
+            [visible]="listToolbarFilterButtonShow">
+          </dx-button>
+          <dx-button
+            (onClick)="novoCadEnv($event)"
+            [icon]="listToolbarNewButtonIconClass"
+            [text]="listToolbarNewButtonText"
+            [visible]="listToolbarNewButtonShow">
+          </dx-button>
+          <dx-button
+            (onClick)="voltar()"
+            [icon]="listToolbarCloseButtonIconClass"
+            [text]="listToolbarCloseButtonText"
+            [visible]="listToolbarCloseButtonShow">
+          </dx-button>
+        </div>
+
+
+        <div *ngIf="mode === modes.List" style="flex-shrink: 1; flex-grow: 1; overflow: auto">
+          <ng-content select="[crud-list-filter-fields]"></ng-content>
+        </div>
+
+        <div *ngIf="mode === modes.List" style="flex-shrink: 1; flex-grow: 1; overflow: auto">
+          <ng-content select="[crud-list-result-fields]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!------------------- EDIT CRUD TEMPLATE -------------------->
+
+  <div *ngIf="mode === modes.Edit">
+    <h2 class="content-block">{{editToolbarTitle}}</h2>
+    <div class="content-block">
+      <div class="dx-card responsive-paddings">
+        <div class="container">
+          <dx-button
+            (onClick)="salvaEnv($event)"
+            icon="save"
+            text="Salvar">
+          </dx-button>
+          <dx-button
+            (onClick)="deleteEnv($event)"
+            *ngIf="edit"
+            icon="trash"
+            text="Excluir">
+          </dx-button>
+          <dx-button
+            *ngIf="!desativarBotaoFechar"
+            (onClick)="voltar()"
+            icon="close"
+            text="Fechar">
+          </dx-button>
+        </div>
+
+        <div *ngIf="mode === modes.Edit" style="flex-shrink: 1; flex-grow: 1; overflow: auto">
+          <ng-content select="[crud-edit-template]"></ng-content>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

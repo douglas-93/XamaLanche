@@ -23,11 +23,11 @@ public class EnderecoService implements BaseCrudService<Endereco, Integer> {
         return repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Endereço não localizado!"));
     }
 
-    public Endereco createOrUpdateEndereco(Endereco endereco){
+    public Endereco createOrUpdate(Endereco endereco){
         return repository.save(endereco);
     }
 
-    public void deleteEndereco(Integer id){
+    public void delete(Integer id){
         Endereco endereco = this.findById(id);
         repository.delete(endereco);
     }

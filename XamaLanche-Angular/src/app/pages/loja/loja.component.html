@@ -1,34 +1,59 @@
-<h2 class="content-block">Loja</h2>
-<div class="content-block">
-  <dx-button
-    text="Buscar"
-    icon="filter"
-    (onClick)="buscarLojas()">
-  </dx-button>
-  <dx-data-grid
-    [dataSource]="lojas">
-    <dxo-editing mode="popup"
-                 [allowUpdating]="true"
-                 [allowDeleting]="true">
-<!--      Verificar   -->
-      <dxo-popup>
-        <dx-form>
-          <dxi-item dataField="nome"></dxi-item>
-          <dxi-item dataField="pedidoMinimo"></dxi-item>
-        </dx-form>
-      </dxo-popup>
+<crud [listToolbarTitle]="'Pesquisa de Lojas'"
+      [editToolbarTitle]="'Cadastro de Lojas'"
+      (filtrar)="buscarLojas()"
+      (novoCadastro)="novaLoja()"
+(salvar)="salvarLoja()">
+
+  <!------------------- LIST CRUD TEMPLATE -------------------->
+  <div crud-list-filter-fields *ngIf="Mode == ModeEnum.List">
+    <dx-form>
+    <dxi-item [label]="{text:'Documentacao'}"></dxi-item>
+    </dx-form>
+  </div>
+
+  <div crud-list-result-fields *ngIf="Mode == ModeEnum.List">
+    <dx-data-grid
+      [dataSource]="lojas">
+      <dxi-column dataField="nome"></dxi-column>
+      <dxi-column dataField="pedidoMinimo" cellTemplate="pedidoMinimoTemplate"></dxi-column>
+
+      <!--    Templates   -->
+      <div *dxTemplate="let data of 'pedidoMinimoTemplate'">
+        {{ data.value ? 'R$ ' + data.value.toFixed(2) : ''}}
+      </div>
+
+    </dx-data-grid>
+  </div>
+
+  <!------------------- EDIT CRUD TEMPLATE -------------------->
+
+  <div crud-edit-template *ngIf="Mode == ModeEnum.Edit">
+    <dx-form [(formData)]="loja">
+      <dxi-item dataField="nome"
+                [isRequired]="true"
+                [label]="{text:'Nome'}"
+                [template]="'NomeTemplate'">
+
+      </dxi-item>
+
+      <dxi-item dataField="pedidoMinimo"
+                [isRequired]="true"
+                [label]="{text:'Pedido Minimo'}"
+                [template]="'pedMinTemplate'">
+
+      </dxi-item>
+
+      <!------------------- TEMPLATE -------------------->
 
 
-    </dxo-editing>
-    <dxi-column dataField="id" [visible]="false"></dxi-column>
-    <dxi-column dataField="nome"></dxi-column>
-    <dxi-column dataField="pedidoMinimo" cellTemplate="pedidoMinimoTemplate"></dxi-column>
-    <dxi-column dataField="versao"></dxi-column>
+      <div *dxTemplate="let data of 'NomeTemplate'">
+        <dx-text-box [width]="500"></dx-text-box>
+      </div>
 
-    <!--    Templates   -->
-    <div *dxTemplate="let data of 'pedidoMinimoTemplate'">
-      {{ data.value ? 'R$ ' + data.value.toFixed(2) : ''}}
-    </div>
+      <div *dxTemplate="let data of 'pedMinTemplate'">
+        <dx-text-box [width]="150" ></dx-text-box>
+      </div>
+    </dx-form>
+  </div>
 
-  </dx-data-grid>
-</div>
+</crud>

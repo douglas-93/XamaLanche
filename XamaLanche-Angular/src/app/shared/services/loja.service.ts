@@ -12,4 +12,8 @@ export class LojaService {
   getLoja() {
     return this.http.get<Loja[]>(`${this.url}`, {observe: 'response'});
   }
+
+  saveLoja(loja: Loja){
+    return this.http.post(`${this.url}`,loja);
+  }
 }

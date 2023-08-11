@@ -1,16 +1,16 @@
 import {HttpClient} from "@angular/common/http";
 
 // @Injectable() - Não pode ser injetável, suas filhas serão
-export abstract class AbstractCRUDService<T> {
+export abstract class AbstractCrudService<T> {
 
     url: string = 'http://localhost:8080/'
 
-    constructor(private http: HttpClient, private path: string) {
-        this.url = this.url + path;
+    constructor(private http: HttpClient, private urlPrefix: string) {
+        this.url = this.url + urlPrefix;
     }
 
     getAll() {
-        return this.http.get<T[]>(`${this.url}/`, {observe: 'response'})
+        return this.http.get<T[]>(`${this.url}`, {observe: 'response'})
     }
 
     getById(id: string) {
@@ -18,7 +18,7 @@ export abstract class AbstractCRUDService<T> {
     }
 
     save(model: T) {
-        return this.http.post(`${this.url}/`, model, {observe: 'response'})
+        return this.http.post(`${this.url}`, model, {observe: 'response'})
     }
 
     update(id: string, model: T) {

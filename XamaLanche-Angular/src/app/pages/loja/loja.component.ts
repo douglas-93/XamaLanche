@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LojaService} from "../../shared/services/loja.service";
 import {Loja} from "../../shared/models/loja";
-import {ModeEnum} from "../../shared/enum/modeEnum";
+import {ModeEnum} from "../../shared/enum/mode.enum";
 import {Router} from "@angular/router";
 
 @Component({
@@ -32,7 +32,7 @@ export class LojaComponent implements OnInit {
       this.lojas = []
     }
 
-    this.lojaService.getLoja().subscribe(res => {
+    this.lojaService.getAll().subscribe(res => {
       if (res.ok) {
         this.lojas = res.body!;
       }
@@ -48,6 +48,6 @@ export class LojaComponent implements OnInit {
 
   salvarLoja() {
     console.log(this.loja)
-    this.lojaService.saveLoja(this.loja).subscribe(res => console.log(res))
+    this.lojaService.save(this.loja).subscribe(res => console.log(res))
   }
 }

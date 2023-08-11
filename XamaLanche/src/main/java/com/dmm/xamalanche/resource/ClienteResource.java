@@ -13,6 +13,7 @@ import java.util.List;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping(value = "/cliente")
 public class ClienteResource {
+
     @Autowired
     private ClienteService clienteService;
 
@@ -35,14 +36,16 @@ public class ClienteResource {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> update(@RequestBody Cliente clienteAtualizado) {
+    public ResponseEntity<Cliente> update(@RequestBody Cliente clienteAtualizado){
         Cliente cliente = clienteService.createOrUpdate(clienteAtualizado);
         return ResponseEntity.status(HttpStatus.OK).body(cliente);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Cliente> delete(@PathVariable Integer id) {
+    public ResponseEntity<Cliente> delete(@PathVariable Integer id){
         clienteService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+
 }

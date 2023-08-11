@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
-import {ModeEnum} from "../../enum/modeEnum";
+import {ModeEnum} from "../../enum/mode.enum";
 import {Router} from "@angular/router";
 
 @Component({

@@ -1,44 +1,8 @@
-<h2 class="content-block">Clientes</h2>
-<div class="content-block">
-  <div class="dx-card responsive-paddings">
-    <app-toolbar
-      [cadastro]="false"
-      (novoCadastro)="novoCliente()">
-    </app-toolbar>
+<crud (filtrar)="buscaClientes()"
+      (novoCadastro)="novoCliente()"
+      (salvar)="salvarCliente()"
+      [editToolbarTitle]="'Cadastro de Clientes'"
+      [listToolbarTitle]="'Pesquisa de Clientes'"
+      [mode]="mode">
 
-    <div class="row">
-      <dx-text-box class="space"
-                   label="Nome"
-                   width="250px">
-      </dx-text-box>
-      <dx-text-box class="space"
-                   label="Telefone"
-                   width="250px">
-      </dx-text-box>
-    </div>
-
-    <dx-data-grid
-      [dataSource]="clientes">
-
-<!--      PARAMETROS DE PESQUISA E PAGINAÇÃO    -->
-      <dxo-filter-row [visible]="true"></dxo-filter-row>
-      <dxo-load-panel [enabled]="true"></dxo-load-panel>
-      <dxo-selection mode="single"></dxo-selection>
-      <dxo-paging
-        [pageIndex]="0"
-        [pageSize]="10">
-      </dxo-paging>
-      <dxo-pager
-        [allowedPageSizes]="[10, 20, 50]"
-        [showNavigationButtons]="true"
-        [showPageSizeSelector]="true">
-      </dxo-pager>
-
-  <!--      COLUNAS    -->
-      <dxi-column dataField="nome"></dxi-column>
-      <dxi-column dataField="telefone"></dxi-column>
-      <dxi-column dataField="endereco"></dxi-column>
-
-    </dx-data-grid>
-  </div>
-</div>
+</crud>

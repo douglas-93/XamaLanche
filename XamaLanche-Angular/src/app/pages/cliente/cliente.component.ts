@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Cliente} from "../../shared/models/cliente";
 import {ClienteService} from "../../shared/services/cliente.service";
 import {Router} from "@angular/router";
+import {ModeEnum} from "../../shared/enum/modeEnum";
 
 @Component({
   selector: 'app-cliente',
@@ -10,6 +11,7 @@ import {Router} from "@angular/router";
 })
 export class ClienteComponent {
 
+  mode: ModeEnum = ModeEnum.List;
   clientes: Cliente[];
 
 
@@ -27,5 +29,11 @@ export class ClienteComponent {
 
   novoCliente() {
     this.router.navigate(['pages', 'cliente-form'])
+  }
+
+  protected readonly ModeEnum = ModeEnum;
+
+  salvarCliente() {
+
   }
 }

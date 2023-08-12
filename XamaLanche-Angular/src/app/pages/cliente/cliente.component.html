@@ -1,8 +1,89 @@
-<crud (filtrar)="buscaClientes()"
-      (novoCadastro)="novoCliente()"
-      (salvar)="salvarCliente()"
+<dx-load-panel
+    #loadPanel
+    [(visible)]='loadingVisible'
+    [hideOnOutsideClick]='false'
+    [position]="{ of: '#grid' }"
+    [shading]='true'
+    [showIndicator]='true'
+    [showPane]='true'
+    message='Carregando ...'
+    shadingColor='rgba(0,0,0,0.4)'>
+</dx-load-panel>
+
+<crud #crud
+      (filtrar)='buscaClientes()'
+      (novoCadastro)='novoCliente()'
+      (salvar)='salvarCliente()'
       [editToolbarTitle]="'Cadastro de Clientes'"
       [listToolbarTitle]="'Pesquisa de Clientes'"
-      [mode]="mode">
+      [mode]='mode'>
+
+    <div *ngIf='mode == ModeEnum.List' crud-list-filter-fields>
+        <dx-form>
+            <dxi-item [colCount]='2' itemType='group'>
+                <dxi-item [label]='{}' template='nomeTemplate'></dxi-item>
+                <dxi-item [label]='{visible: false}' template='telefoneTemplate'></dxi-item>
+            </dxi-item>
+
+            <!--      TEMPLATE      -->
+            <div *dxTemplate="let data of 'nomeTemplate'">
+                <dx-text-box></dx-text-box>
+            </div>
+
+            <div *dxTemplate="let data of 'telefoneTemplate'">
+                <dx-text-box mask='(00) 0000-0000'>
+                </dx-text-box>
+            </div>
+        </dx-form>
+    </div>
+
+    <div *ngIf='mode == ModeEnum.List' crud-list-result-fields>
+        <dx-data-grid [dataSource]='clientes'>
+            <dxi-column dataField='nome'></dxi-column>
+            <dxi-column dataField='telefone'></dxi-column>
+        </dx-data-grid>
+    </div>
+
+    <div *ngIf='mode == ModeEnum.Edit' crud-edit-template>
+
+        <dx-tab-panel>
+            <dxi-item title='Dados Cliente'>
+                <dx-form #formularioCliente
+                         [(formData)]='cliente'
+                         class='formulario'>
+
+                    <dxi-item [colCount]='2' itemType='group'>
+                        <dxi-item [isRequired]=' true'
+                                  dataField='nome'
+                                  template='nomeTemplate'>
+                        </dxi-item>
+
+                        <dxi-item [isRequired]=' true'
+                                  dataField='telefone'
+                                  template='telefoneTemplate'>
+                        </dxi-item>
+                    </dxi-item>
+
+                    <!--      TEMPLATES   -->
+                    <div *dxTemplate="let data of 'nomeTemplate'">
+                        <dx-text-box [(value)]='cliente.nome'>
+                        </dx-text-box>
+                    </div>
+
+                    <div *dxTemplate="let data of 'telefoneTemplate'">
+                        <dx-text-box (onChange)='formatPhone($event)'
+                                     [(value)]='cliente.telefone'>
+                        </dx-text-box>
+                    </div>
+
+                </dx-form>
+            </dxi-item>
+
+            <dxi-item title='Endereço'>
+                <app-endereco-form #formularioEndereco>
+                </app-endereco-form>
+            </dxi-item>
+        </dx-tab-panel>
+    </div>
 
 </crud>

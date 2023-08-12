@@ -12,23 +12,21 @@
       <dx-form #formularioCliente
                [(formData)]="cliente"
                class="formulario">
-        <dxi-item caption="Dados do Cliente" itemType="group">
+        <dxi-item caption="Dados do Cliente"
+                  itemType="group">
+
           <dxi-item dataField="nome"
                     template="nomeTemplate"
                     [isRequired]=" true"
                     [label]="{visible:false}">
-            <!--                        <dxo-label [visible]="false"></dxo-label>-->
-            <!--                        <dxi-validation-rule message="O necessário informar o nome do cliente"-->
-            <!--                                             type="required">-->
-            <!--                        </dxi-validation-rule>-->
-            <!--                        <dxi-validation-rule message="O nome não pode conter números ou caracteres especiais"-->
-            <!--                                             pattern="^[a-zA-Z]+$"-->
-            <!--                                             type="pattern">-->
-            <!--                        </dxi-validation-rule>-->
+
           </dxi-item>
 
-          <dxi-item dataField="telefone" template="telefoneTemplate">
-            <dxo-label [visible]="false"></dxo-label>
+          <dxi-item dataField="telefone"
+                    template="telefoneTemplate">
+            <dxo-label [visible]="false">
+
+            </dxo-label>
             <dxi-validation-rule message="É necessário informar um número para contato"
                                  type="required">
             </dxi-validation-rule>

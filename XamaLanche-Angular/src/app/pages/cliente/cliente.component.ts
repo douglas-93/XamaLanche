@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Cliente} from "../../shared/models/cliente";
 import {ClienteService} from "../../shared/services/cliente.service";
 import {Router} from "@angular/router";
-import {ModeEnum} from "../../shared/enum/modeEnum";
+import { ModeEnum } from 'src/app/shared/enum/mode.enum';
 
 @Component({
   selector: 'app-cliente',

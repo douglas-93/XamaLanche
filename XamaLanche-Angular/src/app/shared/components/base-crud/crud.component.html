@@ -20,6 +20,14 @@
             [visible]="listToolbarNewButtonShow">
           </dx-button>
           <dx-button
+          (onClick)="clearEnv($event)"
+          [icon]="listToolbarClearButtonIconClass"
+          [text]="listToolbarClearButtonText"
+          [visible]="listToolbarClearButtonShow">
+
+          </dx-button>
+
+          <dx-button
             (onClick)="voltar()"
             [icon]="listToolbarCloseButtonIconClass"
             [text]="listToolbarCloseButtonText"

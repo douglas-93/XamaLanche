@@ -23,9 +23,7 @@ export class CrudComponent {
    */
   @Input() listToolbarFilterButtonIconClass = "fa fa-search";
   @Input() listToolbarFilterButtonText = "Filtrar";
-  @Input() listToolbarFilterButtonOrder = 0;
   @Input() listToolbarFilterButtonShow = true;
-  @Input() listToolbarFilterButtonTitle = "Filtrar";
   @Input() listToolbarFilterButtonDisabled = false;
 
   /**
@@ -33,9 +31,7 @@ export class CrudComponent {
    */
   @Input() listToolbarNewButtonIconClass = "fa fa-plus-square";
   @Input() listToolbarNewButtonText = "Novo";
-  @Input() listToolbarNewButtonOrder = 1;
   @Input() listToolbarNewButtonShow = true;
-  @Input() listToolbarNewButtonTitle = "Novo";
   @Input() listToolbarNewButtonDisabled = false;
 
   /**
@@ -43,9 +39,7 @@ export class CrudComponent {
    */
   @Input() listToolbarClearButtonIconClass = "fa fa-eraser";
   @Input() listToolbarClearButtonText = "Limpar";
-  @Input() listToolbarClearButtonOrder = 2;
   @Input() listToolbarClearButtonShow = true;
-  @Input() listToolbarClearButtonTitle = "Limpar";
   @Input() listToolbarClearButtonDisabled = false;
 
 
@@ -54,9 +48,7 @@ export class CrudComponent {
    */
   @Input() listToolbarCloseButtonIconClass = "fa fa-times-circle";
   @Input() listToolbarCloseButtonText = "Fechar";
-  @Input() listToolbarCloseButtonOrder = 3;
   @Input() listToolbarCloseButtonShow = true;
-  @Input() listToolbarCloseButtonTitle = "Fechar";
   @Input() listToolbarCloseButtonDisabled = false;
 
 
@@ -65,6 +57,7 @@ export class CrudComponent {
   @Output() novoCadastro = new EventEmitter();
   @Output() salvar = new EventEmitter();
   @Output() deletar = new EventEmitter();
+  @Output() clear = new EventEmitter();
 
   @Input() cadastro: boolean;
 
@@ -77,24 +70,29 @@ export class CrudComponent {
   }
 
   filtrarEnv(e: any) {
-    this.filtrar.emit(e)
+    this.filtrar.emit(e);
   }
 
   novoCadEnv(e: any) {
-    this.novoCadastro.emit(e)
-    this.mode = ModeEnum.Edit
+    this.novoCadastro.emit(e);
+    this.mode = ModeEnum.Edit;
+  }
+
+  clearEnv(e: any) {
+    this.clear.emit(e);
   }
 
   salvaEnv(e: any) {
-    this.salvar.emit(e)
+    this.salvar.emit(e);
   }
 
   deleteEnv(e: any) {
-    this.deletar.emit(e)
+    this.deletar.emit(e);
   }
 
   voltar() {
     window.history.back();
   }
+
 
 }

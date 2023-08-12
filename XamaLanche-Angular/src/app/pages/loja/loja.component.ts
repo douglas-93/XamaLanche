@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {LojaService} from "../../shared/services/loja.service";
 import {Loja} from "../../shared/models/loja";
 import {ModeEnum} from "../../shared/enum/mode.enum";
 import {Router} from "@angular/router";
+import {DxFormComponent} from "devextreme-angular";
+import {Endereco} from "../../shared/models/endereco";
+import {SituacaoAtivoInativoEnum} from "../../shared/enum/situacao.ativo.inativo.enum";
 
 @Component({
   selector: 'app-loja',
@@ -11,13 +14,17 @@ import {Router} from "@angular/router";
 })
 export class LojaComponent implements OnInit {
 
+  @ViewChild("mainForm",{static:false}) mainForm: DxFormComponent
 
   Mode:ModeEnum = ModeEnum.List
 
 
   lojas: Loja[];
   loja:Loja;
-
+  protected readonly ModeEnum = ModeEnum;
+  situacaoLojas:string[] = Object.values(SituacaoAtivoInativoEnum);
+  nomeLojaFilter: string;
+  endereco:Endereco[]=[]
   constructor(private lojaService: LojaService,
               private router: Router) { }
 
@@ -27,6 +34,10 @@ export class LojaComponent implements OnInit {
     }
   }
 
+  doClear(){
+    this.mainForm.instance.resetValues()
+    // this.nomeLojaFilter = ""
+  }
   buscarLojas() {
     if (!this.lojas) {
       this.lojas = []
@@ -44,7 +55,6 @@ export class LojaComponent implements OnInit {
   }
 
 
-  protected readonly ModeEnum = ModeEnum;
 
   salvarLoja() {
     console.log(this.loja)

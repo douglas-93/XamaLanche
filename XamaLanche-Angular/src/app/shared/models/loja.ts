@@ -1,8 +1,18 @@
+import {Endereco} from "./endereco";
+
+class Cardapio {
+}
+
 export class Loja {
   id: number;
   nome: string;
-  // endereco: Endereco[];
+  telefone:string;
+  email:string;
+  dataAbertura:Date;
+  situacao:Boolean;
+  endereco: Endereco[];
   pedidoMinimo: number;
-  // cardapio: Cardapio[];
+  cardapio: Cardapio[];
   versao: number = 0;
+
 }

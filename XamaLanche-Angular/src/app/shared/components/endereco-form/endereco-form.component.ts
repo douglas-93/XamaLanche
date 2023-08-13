@@ -28,6 +28,7 @@ export class EnderecoFormComponent {
         this.gridData = [];
         this.addAddress = this.addAddress.bind(this);
         this.removeAddress = this.removeAddress.bind(this);
+        this.editAddress = this.editAddress.bind(this);
     }
 
     getLocation() {
@@ -124,14 +125,31 @@ export class EnderecoFormComponent {
                     icon: 'fa fa-minus-circle',
                     onClick: this.removeAddress,
                 }
+            },
+            {
+                location: 'after',
+                widget: 'dxButton',
+                options: {
+                    icon: 'fa fa-pencil',
+                    onClick: this.editAddress,
+                }
             }
         );
     }
 
+    editAddress() {
+        let indexOfAddress = this.gridData.indexOf(this.enderecoSelecinado);
+        if (indexOfAddress != -1) {
+            this.endereco = this.enderecoSelecinado
+            this.gridData.splice(indexOfAddress, 1);
+            this.enderecoSelecinado = new Endereco();
+            return;
+        }
+        notify('Selecione o endereço a ser editado', 'warning', 3000);
+    }
+
     removeAddress() {
         let indexOfAddress = this.gridData.indexOf(this.enderecoSelecinado);
-        console.log(this.enderecoSelecinado);
-        console.log(indexOfAddress);
         if (indexOfAddress != -1) {
             this.gridData.splice(indexOfAddress, 1);
             this.enderecoSelecinado = new Endereco();

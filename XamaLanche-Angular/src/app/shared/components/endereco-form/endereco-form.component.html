@@ -61,3 +61,22 @@
         </dx-button>
     </div>
 </dx-form>
+
+<!--<dx-button icon="fa fa-plus-circle"-->
+<!--           text="Adicionar"></dx-button>-->
+<!--<dx-button icon="fa fa-minus-circle"-->
+<!--           text="Remover"></dx-button>-->
+<dx-data-grid #grid
+              (onSelectionChanged)="selectAddress($event)"
+              (onToolbarPreparing)="onToolbarPreparing($event)"
+              [dataSource]="gridData">
+    <dxo-selection mode="single"></dxo-selection>
+
+    <dxi-column caption="CEP" dataField="cep"></dxi-column>
+    <dxi-column dataField="bairro"></dxi-column>
+    <dxi-column dataField="rua"></dxi-column>
+    <dxi-column caption="Número" dataField="numero"></dxi-column>
+    <dxi-column dataField="cidade"></dxi-column>
+    <dxi-column dataField="estado"></dxi-column>
+
+</dx-data-grid>

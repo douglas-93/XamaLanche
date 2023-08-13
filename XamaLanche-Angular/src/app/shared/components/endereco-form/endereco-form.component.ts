@@ -3,7 +3,7 @@ import {Endereco} from '../../models/endereco';
 import {ChangeEvent} from 'devextreme/ui/text_box';
 import {CepService} from '../../services/cep.service';
 import notify from 'devextreme/ui/notify';
-import {DxFormComponent} from 'devextreme-angular';
+import {DxDataGridComponent, DxFormComponent} from 'devextreme-angular';
 import {GoogleMapsAPIService} from '../../services/googleMapsAPI.service';
 
 @Component({
@@ -14,15 +14,20 @@ import {GoogleMapsAPIService} from '../../services/googleMapsAPI.service';
 export class EnderecoFormComponent {
 
     @ViewChild('enderecoForm', {static: false}) enderecoForm: DxFormComponent;
-    endereco: Endereco;
+    @ViewChild('grid', {static: false}) grid: DxDataGridComponent;
 
+    endereco: Endereco;
+    enderecoSelecinado: Endereco;
+    gridData: Endereco[];
     lat: number;
     long: number;
-
 
     constructor(private cepService: CepService,
                 private googleMapsAPISerivce: GoogleMapsAPIService) {
         this.endereco = new Endereco();
+        this.gridData = [];
+        this.addAddress = this.addAddress.bind(this);
+        this.removeAddress = this.removeAddress.bind(this);
     }
 
     getLocation() {
@@ -80,10 +85,11 @@ export class EnderecoFormComponent {
     }
 
     clearEndereco() {
-        this.endereco.rua = '';
+        /*this.endereco.rua = '';
         this.endereco.bairro = '';
         this.endereco.cidade = '';
-        this.endereco.estado = '';
+        this.endereco.estado = '';*/
+        this.endereco = new Endereco();
     }
 
     validateForm() {
@@ -91,7 +97,63 @@ export class EnderecoFormComponent {
         return this.enderecoForm.instance.validate().isValid;
     }
 
-    getFormData() {
+    private getFormData() {
         return this.enderecoForm.formData;
+    }
+
+    getGridData() {
+        return this.gridData;
+    }
+
+    onToolbarPreparing(e: any) {
+        // Adicione botões personalizados à toolbar
+        e.toolbarOptions.items.push(
+            {
+                location: 'after',
+                widget: 'dxButton',
+                options: {
+                    icon: 'fa fa-plus-circle',
+                    onClick: this.addAddress,
+                    onEnterKey: this.addAddress
+                }
+            },
+            {
+                location: 'after',
+                widget: 'dxButton',
+                options: {
+                    icon: 'fa fa-minus-circle',
+                    onClick: this.removeAddress,
+                }
+            }
+        );
+    }
+
+    removeAddress() {
+        let indexOfAddress = this.gridData.indexOf(this.enderecoSelecinado);
+        console.log(this.enderecoSelecinado);
+        console.log(indexOfAddress);
+        if (indexOfAddress != -1) {
+            this.gridData.splice(indexOfAddress, 1);
+            this.enderecoSelecinado = new Endereco();
+        } else {
+            notify('Selecione o endereço a ser removido', 'warning', 3000);
+        }
+    }
+
+    addAddress() {
+        if (this.validateForm()) {
+            this.gridData.push(this.getFormData());
+            this.clearEndereco();
+            return;
+        }
+        notify('Preencha todos os campos solicitados', 'error', 3000);
+    }
+
+    selectAddress(e: any) {
+        e.component.byKey(e.currentSelectedRowKeys[0]).done(endereco => {
+            if (endereco) {
+                this.enderecoSelecinado = endereco;
+            }
+        });
     }
 }

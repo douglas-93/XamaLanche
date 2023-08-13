@@ -68,9 +68,8 @@ export class ClienteComponent {
   }
 
   salvarCliente() {
-    this.formularioCliente.instance.validate();
-    if (this.formularioEndereco.validateForm() && this.formularioCliente.instance.validate().isValid) {
-      this.cliente.endereco = this.formularioEndereco.getFormData();
+    if (this.formularioEndereco.getGridData().length > 0 && this.formularioCliente.instance.validate().isValid) {
+      this.cliente.endereco = this.formularioEndereco.getGridData();
       this.clienteService.save(this.cliente).subscribe(res => {
           if (res.ok) {
             notify('Cliente salvo com sucesso', 'success', 3000);
@@ -88,9 +87,15 @@ export class ClienteComponent {
         }
       );
     }
-    if (!this.formularioCliente.instance.validate().isValid && !this.formularioEndereco.validateForm()) {
-      notify('Por favor, preencha os dados que estão faltando', 'error', 3000);
+    if (!this.formularioCliente.instance.validate().isValid) {
+      notify('Por favor, preencha os dados do cliente', 'error', 3000);
+      return;
     }
+    if (this.formularioEndereco.getGridData().length === 0) {
+      notify('Por favor, adicione ao menos um endereço antes de prosseguir', 'error', 3000);
+      return;
+    }
+
   }
 
   formatPhone(e: ChangeEvent) {

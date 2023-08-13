@@ -72,7 +72,8 @@
 
                     <div *dxTemplate="let data of 'telefoneTemplate'">
                         <dx-text-box (onChange)='formatPhone($event)'
-                                     [(value)]='cliente.telefone'>
+                                     [(value)]='cliente.telefone'
+                                     [maxLength]="11">
                         </dx-text-box>
                     </div>
 

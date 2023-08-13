@@ -1780,7 +1780,7 @@
   outline: 0;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
-  color: #fff;
+  /*color: #fff;*/
   font-weight: 400;
   font-size: 14px;
   font-family: Roboto,RobotoFallback,"Noto Kufi Arabic",Helvetica,Arial,sans-serif;

@@ -1,1 +1,798 @@
-/* You can add global styles to this file, and also import other style files */
+
+/** DEVEXTREME **/
+.dx-overlay-wrapper {
+  z-index: 220000 !important;
+}
+
+.error-message-details.dx-overlay-wrapper {
+  z-index: 9999999 !important;
+}
+
+
+.dx-popup-wrapper .dx-popup-title {
+  height: 32px !important;
+}
+
+.dx-popup-wrapper .dx-popup-title.dx-toolbar .dx-toolbar-items-container {
+  height: 20px !important;
+}
+
+.dx-popup-wrapper .dx-popup-title .dx-toolbar-before .dx-toolbar-item-content {
+  height: 32px !important;
+  font-size: 14px !important;
+  font-family: Verdana, sans-serif;
+}
+
+.dx-popup-wrapper .dx-popup-title.dx-toolbar .dx-toolbar-items-container .dx-buttonclose.dx-state-hover {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.dx-popup-wrapper .dx-popup-title.dx-toolbar .dx-button:not(.dx-closebutton) {
+  display: block;
+  border-radius: 4px;
+  background: 0 0;
+  width: 23px;
+  height: 23px;
+  margin: -8px -4px 0 4px;
+  border: 1px solid transparent;
+}
+
+.dx-list-item.dx-state-focused {
+  background-color: #cfcfcf !important;
+}
+
+dx-button:not([text]) .dx-button-content {
+  padding: 5px !important;
+}
+
+.dx-button-normal.dx-button-mode-contained.dx-state-hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
+/** CRUD **/
+window-component {
+  min-width: 1000px;
+  width: 100%;
+  height: 100%;
+}
+
+.context-toolbar-invisible window-component > * {
+  width: 100%;
+  height: calc(100vh - 114px);
+}
+
+.context-toolbar-visible window-component > * {
+  width: 100%;
+  height: calc(100vh - 174px);
+}
+
+dashboard {
+  width: 100%;
+  height: 100%;
+}
+
+crud {
+  height: inherit;
+}
+
+.crud-toolbar {
+  align-items: center;
+  width: 100%;
+  font-size: 140%;
+  font-weight: 400;
+  color: black;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.crud-toolbar-buttons > * {
+  align-items: center;
+}
+
+.crud-toolbar-buttons:hover {
+  opacity: 0.6;
+}
+
+.crud-toolbar-right-section {
+  padding-right: 20px;
+}
+
+.crud-toolbar-right-section > div {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.crud > div {
+  border: 1px dashed rgb(192, 192, 192);
+  padding: 10px;
+}
+
+.crud-dynamic-edit-column {
+  cursor: pointer;
+}
+
+.crud-dynamic-edit-column:hover {
+  opacity: 0.6;
+}
+
+.login-connections-panel {
+  overflow: hidden;
+  overflow: -moz-hidden-unscrollable;
+  display: inline-block;
+  position: relative;
+  font-size: 12px;
+  color: #ffffff;
+  border: 0;
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.login-connections-panel select {
+  width: 100%;
+  height: 40px;
+  color: white;
+  background: linear-gradient(45deg, transparent 50%, #ffffff 50%),
+  linear-gradient(135deg, #ffffff 50%, transparent 50%), transparent;
+  background-position: calc(100% - 21px) calc(1em + 2px), calc(100% - 16px) calc(1em + 2px), 100% 0;
+  background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+  background-repeat: no-repeat;
+  line-height: 1.5em;
+  padding: 0.5em 3.5em 0.5em 1em;
+  border-radius: 4px;
+  border: 0px !important;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.login-connections-panel select option {
+  color: #000000;
+}
+
+.remember-me-modal-content {
+  display: flex;
+}
+
+.remember-me-additional-options {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  padding: 10px;
+}
+
+.remember-me-additional-options > div {
+  padding: 10px;
+}
+
+.remember-me-additional-options-title {
+  width: 130px;
+}
+
+.remember-me-additional-options-area {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.remember-me-modal-content-area {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.remember-me-modal-content-area table {
+  width: 305px;
+  border-collapse: separate;
+  border-spacing: 3px;
+}
+
+.remember-me-modal-footer {
+  padding: 5px;
+  margin: 0;
+  border-top: 1px solid #ccc;
+  flex-direction: row-reverse;
+  width: 100%;
+  display: flex;
+}
+
+.remember-me-input-label {
+  font-size: 11px;
+}
+
+.remember-me-captcha {
+  margin-left: 28px;
+}
+
+.remember-me-modal {
+  width: 680px;
+  overflow: hidden;
+}
+
+remember-me {
+  display: none;
+  position: absolute;
+  top: 175px;
+  left: 50%;
+  margin-left: -315px;
+  //z-index: 77777;
+}
+
+remember-me > div {
+  z-index: 999999;
+}
+
+terms-of-use {
+  display: none;
+  position: absolute;
+  top: 175px;
+  left: 50%;
+  margin-left: -315px;
+  z-index: 77777; }
+
+terms-of-use > div {
+  z-index: 999999;
+}
+
+login-dois-fatores {
+  display: none;
+  position: absolute;
+  top: 175px;
+  left: 50%;
+  margin-left: -315px;
+  z-index: 77777; }
+
+login-dois-fatores > div {
+  z-index: 999999; }
+
+.captcha-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.captcha-input-container {
+  display: flex;
+}
+
+.captcha-input-container > span {
+  color: rgb(201, 201, 201);
+  font-size: 11px;
+  margin-right: 3px;
+}
+
+.captcha-input-src {
+  margin-top: 5px;
+}
+
+.captcha-input-reset {
+}
+
+.captcha-input-reset a {
+  font-family: arial;
+  font-size: 11px;
+  cursor: pointer;
+  color: darkblue;
+}
+
+.captch-input-field {
+  font-family: arial;
+  font-size: 11px;
+  cursor: pointer;
+  margin-right: 5px;
+  color: rgb(201, 201, 201);
+}
+
+/** classic modal **/
+.classic-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.classic-modal .classic-modal-header {
+  width: 100%;
+  height: 29px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--classic-modal-header-background-color);
+  align-items: center;
+  color: var(--classic-modal-header-color);
+  font-size: var(--classic-modal-header-font-size);
+}
+
+.classic-modal .classic-modal-header-title {
+  margin-left: 10px;
+}
+
+.classic-modal .classic-modal-header-close {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.classic-modal .classic-modal-content {
+  background-color: var(--classic-modal-background-color);
+  display: flex;
+  align-items: center;
+}
+
+.classic-modal .classic-modal-footer {
+  display: flex;
+  background-color: var(--classic-modal-footer-background-color);
+}
+
+dx-chart-wrapper {
+  width: 100% !important;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+dx-chart {
+  flex-grow: 1 !important;
+  width: 99% !important;
+  height: 99% !important;
+}
+
+.dx-widget {
+  font-size: 11px !important;
+}
+
+.graph-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 5px;
+  background-color: white;
+  position: relative;
+}
+
+.graph-toolbar {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.search-icon {
+  cursor: pointer;
+}
+
+div[alignment=right] input {
+  text-align: right;
+}
+
+div[alignment=center] input {
+  text-align: center;
+}
+
+div[alignment=left] input {
+  text-align: left;
+}
+
+div[uppercase] input {
+  text-transform: uppercase;
+}
+
+div[lowercase] input {
+  text-transform: lowercase;
+}
+
+.dx-texteditor-input {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  //padding-left: 6px !important;
+  min-height: 28px !important;
+}
+
+.dx-layout-manager .dx-field-item:not(.dx-first-row) {
+  padding-top: 4px !important;
+}
+
+/*
+dx-form {
+  padding-top: 4px !important;
+}
+*/
+
+label.dx-field-item-label {
+  padding-top: 5px !important;
+}
+
+.dx-form .dx-field-item-label-content {
+  width: 100px !important;
+  text-align: right;
+}
+
+.dx-form .dx-radiobutton .dx-item-content {
+  margin-top: 1px !important;
+}
+
+.dx-form .dx-radiobutton {
+  margin-top: 4px !important;
+}
+
+.dx-layout-manager .dx-field-item:not(.dx-first-col) {
+  margin-left: -25px !important;
+}
+
+/* itemType="group" para os casos em que devem ser colocados dois ou mais itens em um grupo, na mesma linha, para que sejam renderizados próximos um ao outro */
+.dx-form-group div.dx-box-flex {
+  flex-grow: 0 !important;
+  align-items: flex-start !important;
+}
+.dx-form-group .dx-item.dx-box-item {
+  flex: unset !important;
+}
+.dx-box-item-content .dx-item.dx-box-item {
+  flex: unset !important;
+}
+
+div[crud-list-filter-fields] {
+  margin-top: 10px;
+}
+
+dx-accordion div[crud-list-filter-fields] {
+  margin-top: 0px;
+}
+
+div[crud-edit-template] {
+  margin-top: 10px;
+}
+
+.dxi-check-box-alignment {
+  margin-top: -4px;
+}
+
+.dxi-check-box-alignment .dx-field-item {
+  padding-top: 0px !important;
+}
+
+.checkbox-container {
+  height: 26px;
+  display: flex;
+  align-items: center
+}
+
+dx-number-box input {
+  text-align: right !important;
+}
+
+.dx-numberbox-spin input {
+  text-align: left !important;
+}
+
+.dx-checkbox-container {
+  text-align: left;
+}
+
+.form-item-label {
+  text-align: left;
+  padding-top: 5px;
+}
+
+.text-invalid {
+  color: #d9534f !important;
+}
+
+.text-success {
+  color: #80BF80 !important;
+}
+
+.input-align-center {
+  text-align: center !important;
+}
+
+//CKEDITOR5
+
+.document-editor {
+  border: 1px solid var(--ck-color-base-border);
+  border-radius: var(--ck-border-radius);
+
+  /* Set vertical boundaries for the document editor. */
+  max-height: 700px;
+
+  /* This element is a flex container for easier rendering. */
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.document-editor__toolbar {
+  /* Make sure the toolbar container is always above the editable. */
+  z-index: 1;
+
+  /* Create the illusion of the toolbar floating over the editable. */
+  box-shadow: 0 0 5px hsla(0, 0%, 0%, .2);
+
+  /* Use the CKEditor CSS variables to keep the UI consistent. */
+  border-bottom: 1px solid var(--ck-color-toolbar-border);
+}
+
+/* Adjust the look of the toolbar inside the container. */
+.document-editor__toolbar .ck-toolbar {
+  border: 0;
+  border-radius: 0;
+}
+
+/* Make the editable container look like the inside of a native word processor application. */
+.document-editor__editable-container {
+  padding: calc(2 * var(--ck-spacing-large));
+  background: var(--ck-color-base-foreground);
+
+  /* Make it possible to scroll the "page" of the edited content. */
+  overflow-y: scroll;
+}
+
+.document-editor__editable-container .ck-editor__editable {
+  /* Set the dimensions of the "page". */
+  width: 15.8cm;
+  min-height: 21cm;
+
+  /* Keep the "page" off the boundaries of the container. */
+  padding: 1cm 2cm 2cm;
+
+  border: 1px hsl(0, 0%, 82.7%) solid;
+  border-radius: var(--ck-border-radius);
+  background: white;
+
+  /* The "page" should cast a slight shadow (3D illusion). */
+  box-shadow: 0 0 5px hsla(0, 0%, 0%, .1);
+
+  /* Center the "page". */
+  margin: 0 auto;
+}
+
+.document-editor {
+  width: 100%;
+  height: 100%;
+}
+
+/* Set the default font for the "page" of the content. */
+.document-editor .ck-content,
+.document-editor .ck-heading-dropdown .ck-list {
+  font: 16px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Adjust the headings dropdown to host some larger heading styles. */
+.document-editor .ck-heading-dropdown .ck-dropdown__panel .ck-list > .ck-list__item {
+  line-height: calc(1.2 * var(--ck-line-height-base) * var(--ck-font-size-base));
+  min-width: 8em;
+}
+
+/* Set the styles for "Heading 1". */
+.document-editor .ck-content h2,
+.document-editor .ck-heading-dropdown .ck-heading_heading1 {
+  font-size: 2.18em;
+}
+
+.document-editor .ck-content h2 {
+  line-height: 1.37em;
+  padding-top: .342em;
+  margin-bottom: .142em;
+}
+
+/* Set the styles for "Heading 2". */
+.document-editor .ck-content h3,
+.document-editor .ck-heading-dropdown .ck-heading_heading2 {
+  font-size: 1.75em;
+  color: hsl(203, 100%, 50%);
+}
+
+.document-editor .ck-heading-dropdown .ck-heading_heading2.ck-list__item_active {
+  color: var(--ck-color-list-item-text-active);
+}
+
+/* Set the styles for "Heading 2". */
+.document-editor .ck-content h3 {
+  line-height: 1.86em;
+  padding-top: .171em;
+  margin-bottom: .357em;
+}
+
+/* Set the styles for "Heading 3". */
+.document-editor .ck-content h4,
+.document-editor .ck-heading-dropdown .ck-heading_heading3 {
+  font-size: 1.31em;
+}
+
+.document-editor .ck-content h4 {
+  line-height: 1.24em;
+  padding-top: .286em;
+  margin-bottom: .952em;
+}
+
+/* Set the styles for "Paragraph". */
+.document-editor .ck-content p,
+.document-editor .ck-heading-dropdown .ck-heading_paragraph {
+  font-size: 1em;
+}
+
+.document-editor .ck-content p {
+  line-height: 1.63em;
+  padding-top: .5em;
+  margin-bottom: 1.13em;
+}
+
+/* Make the block quoted text serif with some additional spacing. */
+.document-editor .ck-content blockquote {
+  font-family: Georgia, serif;
+  margin-left: calc(2 * var(--ck-spacing-large));
+  margin-right: calc(2 * var(--ck-spacing-large));
+}
+
+ckeditor {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+//FIM CKEDITOR5
+
+.ellipsis-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+div.has-inner-popup .dx-datagrid-edit-popup {
+  display: none !important;
+}
+
+.has-underline {
+  text-decoration: underline !important;
+}
+
+// on print, expand tables and divs
+@media only print {
+  .graphPrint {
+
+    div, table {
+      width: auto !important;
+      height: auto !important;
+      overflow: visible !important;
+    }
+
+  }
+
+}
+
+
+//grids
+
+.invalid-cell {
+  color: red !important;
+  font-weight: bold;
+}
+
+.hint-invalid-cell {
+  font-size: 10px !important;
+}
+
+.disabled-cell {
+  background-color: hsl(0, 0%, 90%);
+  cursor: not-allowed;
+}
+
+/*
+  Definicao das classes de css que definirao toda a hierarquia de camadas visuais da aplicacao (z-index)
+*/
+.camada-visual-1 {
+  z-index: 100;
+}
+
+.camada-visual-2 {
+  z-index: 120;
+}
+
+.camada-visual-3 {
+  z-index: 140;
+}
+
+.camada-visual-4 {
+  z-index: 160;
+}
+
+.camada-visual-5 {
+  z-index: 180;
+}
+
+.camada-visual-6 {
+  z-index: 200;
+}
+
+// ----  As camadas abaixo estão acima dos componentes do smartgwt -----//
+
+.camada-visual-7 {
+  z-index: 2200000;
+}
+
+.camada-visual-8 {
+  z-index: 2400000;
+}
+
+.camada-visual-9 {
+  z-index: 2600000;
+}
+
+.camada-visual-10 {
+  z-index: 2800000;
+}
+
+.dx-dialog-message {
+  padding: 10px !important;
+}
+
+.dxc-tooltip {
+  z-index: 300;
+}
+
+.dx-scheduler-work-space {
+  background-color: var(--dashboard-item-background-color);
+}
+
+.dashboard-toolbar-button {
+  font-size: 16px;
+  color: #333333;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.dx-datagrid .dx-link {
+  text-decoration: none !important;
+}
+
+.dx-datagrid .dx-datagrid-content .dx-datagrid-table .dx-row .dx-link {
+  font-size: 16px !important;
+}
+
+dx-diagram.dx-diagram-fullscreen {
+  z-index: 999999 !important;
+}
+
+.dx-checkbox-text{
+  padding-top: 3px !important;
+  font-size: 14px !important;
+}
+
+.dx-label-h-align.dx-flex-layout:not(.dx-field-item-label-align) {
+  align-items: center !important;
+}
+
+.data-as-label {
+  color: #1e28af;
+  margin-top: 5px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.data-as-label-secondary {
+  color: mediumseagreen;
+  margin-top: 5px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.data-as-label-terciary {
+  color: #2a333b;
+  margin-top: 5px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.dx-form .custom-item-type-group .dx-item-content {
+  width: 660px !important;
+}
+
+.dx-form .align-self-flex-end {
+  align-self: flex-end;
+}
+
+.edit-toolbar-button .dx-button-content {
+  padding: 5px !important;
+}

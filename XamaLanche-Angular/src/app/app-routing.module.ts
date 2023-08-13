@@ -11,12 +11,12 @@ import {HomeComponent} from './pages/home/home.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import {TasksComponent} from './pages/tasks/tasks.component';
 import {
-    DxButtonModule,
-    DxDataGridModule,
-    DxFormModule,
-    DxLoadPanelModule, DxTabPanelModule,
-    DxTextBoxModule,
-    DxValidatorModule
+  DxButtonModule,
+  DxDataGridModule, DxDateBoxModule,
+  DxFormModule,
+  DxLoadPanelModule, DxSelectBoxModule, DxSwitchModule, DxTabPanelModule,
+  DxTextBoxModule,
+  DxValidatorModule
 } from 'devextreme-angular';
 import {LojaComponent} from './pages/loja/loja.component';
 import {ProdutoComponent} from './pages/produto/produto.component';
@@ -31,7 +31,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 
 const routes: Routes = [
 
-  {path: 'pages/cliente-form', component: ClienteComponent, canActivate: [AuthGuardService]},
+  {path: 'pages/cliente/edit', component: ClienteComponent, canActivate: [AuthGuardService]},
   {path: 'pages/cliente', component: ClienteComponent, canActivate: [AuthGuardService]},
 
   {path: 'pages/cardapio', component: CardapioComponent, canActivate: [AuthGuardService]},
@@ -53,7 +53,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { useHash: true }), DxDataGridModule, DxFormModule, DxButtonModule, ToolbarModule, DxTextBoxModule, CommonModule, DxLoadPanelModule, ReactiveFormsModule, DxValidatorModule, DxTabPanelModule],
+  imports: [RouterModule.forRoot(routes, {useHash: true}), DxDataGridModule, DxFormModule, DxButtonModule, ToolbarModule, DxTextBoxModule, CommonModule, DxLoadPanelModule, ReactiveFormsModule, DxValidatorModule, DxTabPanelModule, DxDateBoxModule, DxSwitchModule, DxSelectBoxModule],
   providers: [AuthGuardService],
   exports: [RouterModule],
   declarations: [

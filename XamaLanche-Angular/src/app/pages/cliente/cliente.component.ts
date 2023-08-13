@@ -1,14 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
-import { Cliente } from '../../shared/models/cliente';
-import { ClienteService } from '../../shared/services/cliente.service';
-import { Router } from '@angular/router';
-import { ModeEnum } from 'src/app/shared/enum/mode.enum';
+import {Component, ViewChild} from '@angular/core';
+import {Cliente} from '../../shared/models/cliente';
+import {ClienteService} from '../../shared/services/cliente.service';
+import {Router} from '@angular/router';
+import {ModeEnum} from 'src/app/shared/enum/mode.enum';
 import notify from 'devextreme/ui/notify';
-import { ChangeEvent } from 'devextreme/ui/text_box';
-import { FormatAndMaks } from '../../shared/utils/FormatAndMaks';
-import { DxFormComponent } from 'devextreme-angular';
-import { EnderecoFormComponent } from '../../shared/components/endereco-form/endereco-form.component';
-import { CrudComponent } from '../../shared/components/base-crud/crud.component';
+import {ChangeEvent} from 'devextreme/ui/text_box';
+import {FormatAndMaks} from '../../shared/utils/FormatAndMaks';
+import {DxFormComponent} from 'devextreme-angular';
+import {EnderecoFormComponent} from '../../shared/components/endereco-form/endereco-form.component';
+import {CrudComponent} from '../../shared/components/base-crud/crud.component';
 
 
 @Component({
@@ -18,13 +18,13 @@ import { CrudComponent } from '../../shared/components/base-crud/crud.component'
 })
 export class ClienteComponent {
 
-  @ViewChild('formularioCliente', { static: false })
+  @ViewChild('formularioCliente', {static: false})
   formularioCliente: DxFormComponent;
 
-  @ViewChild('formularioEndereco', { static: false })
+  @ViewChild('formularioEndereco', {static: false})
   formularioEndereco: EnderecoFormComponent;
 
-  @ViewChild('crud') crud: CrudComponent;
+  @ViewChild('crud', {static: false}) crud: CrudComponent;
 
   mode: ModeEnum = ModeEnum.List;
   loadingVisible: boolean = false;
@@ -35,20 +35,36 @@ export class ClienteComponent {
   constructor(private clienteService: ClienteService,
               private router: Router) {
     this.cliente = new Cliente();
+    /*  if (this.crud.edit) {
+        this.mode = ModeEnum.Edit
+      }*/
   }
+
+  ngOnInit() {
+    let isEditing: boolean = this.router.url.split('/').includes('edit');
+    if (isEditing) {
+      this.mode = ModeEnum.Edit;
+    }
+  }
+
 
   buscaClientes() {
     this.loadingVisible = true;
     this.clienteService.getAll().subscribe(res => {
-      if (res.ok) {
-        this.clientes = res.body!;
+        if (res.ok) {
+          this.clientes = res.body!;
+          this.loadingVisible = false;
+        }
+      },
+      error => {
         this.loadingVisible = false;
+        notify('Não foi possível buscar os clientes cadastrados', 'error', 3000);
       }
-    });
+    );
   }
 
   novoCliente() {
-    this.router.navigate(['pages', 'cliente']);
+    this.router.navigate(['pages', 'cliente', 'edit']);
   }
 
   salvarCliente() {

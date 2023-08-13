@@ -1,6 +1,9 @@
 <dx-form #enderecoForm
          [formData]='endereco'>
-    <dxi-item dataField='cep' template='cepTemplate'></dxi-item>
+    <dxi-item [colCount]="2" itemType="group">
+        <dxi-item dataField='cep' template='cepTemplate'></dxi-item>
+        <dxi-item template='localButtonTemplate'></dxi-item>
+    </dxi-item>
 
     <dxi-item [colCount]='2' itemType='group'>
         <dxi-item [isRequired]='true'
@@ -50,5 +53,11 @@
     <div *dxTemplate="let data of 'numeroTemplate'">
         <dx-text-box [(value)]='endereco.numero'>
         </dx-text-box>
+    </div>
+    <div *dxTemplate="let data of 'localButtonTemplate'">
+        <dx-button (onClick)="getLocation()"
+                   [icon]="'fa fa-map-marker'"
+                   text="Usar Localização">
+        </dx-button>
     </div>
 </dx-form>

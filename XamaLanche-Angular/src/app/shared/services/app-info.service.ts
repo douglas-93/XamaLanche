@@ -5,7 +5,7 @@ export class AppInfoService {
   constructor() {}
 
   public get title() {
-    return 'XamaLanche Angular';
+    return 'XamaLanche';
   }
 
   public get currentYear() {

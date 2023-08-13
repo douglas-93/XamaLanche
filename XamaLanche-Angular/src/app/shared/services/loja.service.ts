@@ -4,7 +4,7 @@ import {Loja} from "../models/loja";
 import {AbstractCrudService} from "./abstract.crud.service";
 
 @Injectable()
-export class LojaService extends AbstractCrudService<Loja>{
+export class LojaService extends AbstractCrudService<Loja, any>{
 
   constructor(http: HttpClient) {
     super(http, "loja");

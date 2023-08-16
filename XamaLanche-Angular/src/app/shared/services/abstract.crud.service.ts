@@ -1,9 +1,10 @@
 import {HttpClient} from "@angular/common/http";
+import {environment} from '../../../enviroment';
 
 // @Injectable() - Não pode ser injetável, suas filhas serão
 export abstract class AbstractCrudService<T> {
 
-    url: string = 'http://localhost:8080/'
+    url: string = environment.BASE_URL
 
     constructor(private http: HttpClient, private urlPrefix: string) {
         this.url = this.url + urlPrefix;

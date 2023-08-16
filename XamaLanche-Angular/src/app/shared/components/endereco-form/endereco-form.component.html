@@ -1,0 +1,82 @@
+<dx-form #enderecoForm
+         [formData]='endereco'>
+    <dxi-item [colCount]="2" itemType="group">
+        <dxi-item dataField='cep' template='cepTemplate'></dxi-item>
+        <dxi-item template='localButtonTemplate'></dxi-item>
+    </dxi-item>
+
+    <dxi-item [colCount]='2' itemType='group'>
+        <dxi-item [isRequired]='true'
+                  dataField='bairro'
+                  template='bairroTemplate'></dxi-item>
+        <dxi-item [isRequired]='true'
+                  dataField='rua'
+                  template='ruaTemplate'></dxi-item>
+    </dxi-item>
+
+    <dxi-item [colCount]='3' itemType='group'>
+        <dxi-item [isRequired]='true'
+                  dataField='numero'
+                  template='numeroTemplate'></dxi-item>
+        <dxi-item [isRequired]='true'
+                  dataField='cidade'
+                  template='cidadeTemplate'></dxi-item>
+        <dxi-item [isRequired]='true'
+                  dataField='estado'
+                  template='estadoTemplate'></dxi-item>
+    </dxi-item>
+
+    <!--  TEMPLATES -->
+    <div *dxTemplate="let data of 'cepTemplate'">
+        <dx-text-box (onChange)='buscaCep($event)'
+                     [(value)]='endereco.cep'
+                     [mask]="'00.000-000'"
+                     width='200'>
+        </dx-text-box>
+    </div>
+    <div *dxTemplate="let data of 'bairroTemplate'">
+        <dx-text-box [(value)]='endereco.bairro'>
+        </dx-text-box>
+    </div>
+    <div *dxTemplate="let data of 'ruaTemplate'">
+        <dx-text-box [(value)]='endereco.rua'>
+        </dx-text-box>
+    </div>
+    <div *dxTemplate="let data of 'cidadeTemplate'">
+        <dx-text-box [(value)]='endereco.cidade'>
+        </dx-text-box>
+    </div>
+    <div *dxTemplate="let data of 'estadoTemplate'">
+        <dx-text-box [(value)]='endereco.estado'>
+        </dx-text-box>
+    </div>
+    <div *dxTemplate="let data of 'numeroTemplate'">
+        <dx-text-box [(value)]='endereco.numero'>
+        </dx-text-box>
+    </div>
+    <div *dxTemplate="let data of 'localButtonTemplate'">
+        <dx-button (onClick)="getLocation()"
+                   [icon]="'fa fa-map-marker'"
+                   text="Usar Localização">
+        </dx-button>
+    </div>
+</dx-form>
+
+<!--<dx-button icon="fa fa-plus-circle"-->
+<!--           text="Adicionar"></dx-button>-->
+<!--<dx-button icon="fa fa-minus-circle"-->
+<!--           text="Remover"></dx-button>-->
+<dx-data-grid #grid
+              (onSelectionChanged)="selectAddress($event)"
+              (onToolbarPreparing)="onToolbarPreparing($event)"
+              [dataSource]="gridData">
+    <dxo-selection mode="single"></dxo-selection>
+
+    <dxi-column caption="CEP" dataField="cep"></dxi-column>
+    <dxi-column dataField="bairro"></dxi-column>
+    <dxi-column dataField="rua"></dxi-column>
+    <dxi-column caption="Número" dataField="numero"></dxi-column>
+    <dxi-column dataField="cidade"></dxi-column>
+    <dxi-column dataField="estado"></dxi-column>
+
+</dx-data-grid>

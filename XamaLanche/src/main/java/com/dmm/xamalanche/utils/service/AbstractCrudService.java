@@ -5,6 +5,8 @@ import com.dmm.xamalanche.utils.repository.BaseCrudRepository;
 import org.hibernate.service.spi.ServiceException;
 
 import java.util.List;
+import java.util.Optional;
+
 /** Classe Abstrata que servira de Base para todos os services
  * Contem metodos como Save, Update, Delete, getById e Validacoes */
 public abstract class AbstractCrudService<T,ID> implements BaseCrudService<T, ID> {
@@ -69,7 +71,7 @@ public abstract class AbstractCrudService<T,ID> implements BaseCrudService<T, ID
     /** Metodo padrao de buscar por ID da entity */
 
     public T getById(ID id) {
-        return (T) this.getRepository().getById(id);
+        return (T) this.getRepository().findById(id).orElseThrow();
     }
 
 

@@ -1,23 +1,28 @@
 package com.dmm.xamalanche.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "enderecos")
-public class Endereco {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Endereco implements Serializable {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     private Loja loja;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
     private String rua;

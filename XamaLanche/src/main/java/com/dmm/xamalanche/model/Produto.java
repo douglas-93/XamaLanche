@@ -27,7 +27,7 @@ public class Produto {
     @ManyToOne
     private Promocao promocao;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "produto")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Acrescimo> acrescimos;
 
     @ManyToOne

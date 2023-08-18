@@ -23,7 +23,7 @@ public class Cardapio {
     @ManyToOne
     private Loja loja;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produto> produtos;
 
     @Version

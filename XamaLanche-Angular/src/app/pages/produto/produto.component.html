@@ -1,4 +1,77 @@
-<h2 class="content-block">Produto</h2>
-<div class="content-block">
-    <div class="dx-card responsive-paddings">Put your content here</div>
-</div>
+<crud [editToolbarTitle]="'Cadastro de Produtos'"
+      [listToolbarTitle]="'Listagem de Produtos'"
+      [mode]="mode"
+      (novoCadastro)="novoProduto()">
+
+    <div *ngIf="mode === ModeEnum.List" crud-list-filter-fields>
+        <dx-form>
+            <dxi-item itemType="group" [colCount]="6">
+                <dxi-item [colSpan]="4" [label]="{text: 'Nome'}" [template]="'nomeTemplate'"></dxi-item>
+                <dxi-item [label]="{text: 'Valor'}" [template]="'ValorTemplate'"></dxi-item>
+                <dxi-item [label]="{text: 'Ativo'}" [template]="'AtivoTemplate'"></dxi-item>
+            </dxi-item>
+
+            <!--            TEMPLATES           -->
+
+            <div *dxTemplate="let data of 'nomeTemplate'">
+                <dx-text-box></dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'ValorTemplate'">
+                <dx-text-box></dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'AtivoTemplate'">
+                <dx-select-box [dataSource]="dxSelectBoxAtivoOptions">
+                </dx-select-box>
+            </div>
+
+        </dx-form>
+    </div>
+
+    <div *ngIf="mode === ModeEnum.List" crud-list-result-fields>
+        <dx-data-grid [dataSource]="produtos">
+            <dxi-column dataField="nome" caption="Nome do Produto"></dxi-column>
+            <dxi-column dataField="valor" caption="Valor R$"></dxi-column>
+            <dxi-column dataField="quantidade" caption="Quantidade"></dxi-column>
+            <dxi-column dataField="ativo" caption="Ativo" cellTemplate="ativoTemplate"></dxi-column>
+
+            <!--            TEMPLATE            -->
+
+            <div *dxTemplate="let data of 'ativoTemplate'">
+                {{data ? 'Ativo' : 'Inativo'}}
+            </div>
+
+        </dx-data-grid>
+    </div>
+
+    <div *ngIf="mode === ModeEnum.Edit" crud-edit-template>
+        <dx-form [(formData)]="produto">
+            <dxi-item itemType="group" [colCount]="2">
+                <dxi-item dataField="nome" [template]="'nomeTemplate'"></dxi-item>
+                <dxi-item dataField="ativo" [template]="'ativoTemplate'"></dxi-item>
+                <dxi-item dataField="valor" [template]="'valorTemplate'"></dxi-item>
+                <dxi-item dataField="quantidade" [disabled]="true"></dxi-item>
+            </dxi-item>
+
+            <!--            TEMPLATES           -->
+
+            <div *dxTemplate="let data of 'nomeTemplate'">
+                <dx-text-box [(value)]="produto.nome">
+                </dx-text-box>
+            </div>
+
+            <div *dxTemplate="let data of 'valorTemplate'">
+                <dx-number-box [(value)]="produto.valor"
+                               type="currency"
+                               format="R$ ,##0.##"
+                               [min]="0">
+                </dx-number-box>
+            </div>
+
+            <div *dxTemplate="let data of 'ativoTemplate'">
+                <dx-switch [(value)]="produto.ativo">
+                </dx-switch>
+            </div>
+
+        </dx-form>
+    </div>
+</crud>

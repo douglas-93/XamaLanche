@@ -16,10 +16,10 @@ public class Venda {
 
     private BigDecimal Valor;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "venda")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "venda", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produto> produtos;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Cliente cliente;
 
     @Enumerated(EnumType.STRING)

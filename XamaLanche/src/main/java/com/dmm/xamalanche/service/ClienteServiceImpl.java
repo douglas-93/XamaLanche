@@ -4,36 +4,30 @@ package com.dmm.xamalanche.service;
 import com.dmm.xamalanche.model.Cliente;
 import com.dmm.xamalanche.repository.ClienteRepository;
 import com.dmm.xamalanche.service.api.ClienteService;
+import com.dmm.xamalanche.utils.CollectionMetodsUtils;
 import com.dmm.xamalanche.utils.repository.BaseCrudRepository;
 import com.dmm.xamalanche.utils.service.AbstractCrudService;
-import com.dmm.xamalanche.utils.service.BaseCrudService;
-import jakarta.persistence.EntityNotFoundException;
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ClienteServiceImpl extends AbstractCrudService<Cliente,Integer> implements ClienteService {
     @Autowired
     private ClienteRepository repository;
 
-//    public List<Cliente> findAll(){
-//        return repository.findAll();
-//    }
-//
-//    public Cliente findById(Integer id){
-//        return repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Cliente não localizado!"));
-//    }
-//
-//    public Cliente createOrUpdate(Cliente cliente){
-//        return repository.save(cliente);
-//    }
-//
-//    public void delete(Integer id){
-//        Cliente cliente = this.findById(id);
-//        repository.delete(cliente);
-//    }
+    /**
+     * Setando a referência do cliente no endereço
+    **/
+    @Override
+    protected void beforeSave(Cliente entity) throws ServiceException {
+        if (CollectionMetodsUtils.isNotObjectEmpty(entity)) {
+            entity.getEndereco().forEach(e -> {
+                e.setCliente(entity);
+            });
+        }
+        super.beforeSave(entity);
+    }
 
     @Override
     public BaseCrudRepository getRepository() {

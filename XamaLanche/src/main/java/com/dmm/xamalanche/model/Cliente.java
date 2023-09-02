@@ -1,13 +1,16 @@
 package com.dmm.xamalanche.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "clientes")
-public class Cliente {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -16,7 +19,7 @@ public class Cliente {
 
     private String telefone;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Endereco> endereco;
 
     @Version
@@ -47,13 +50,13 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-//    public List<Endereco> getEndereco() {
-//        return endereco;
-//    }
-//
-//    public void setEndereco(List<Endereco> endereco) {
-//        this.endereco = endereco;
-//    }
+    public List<Endereco> getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(List<Endereco> endereco) {
+        this.endereco = endereco;
+    }
 
     public Integer getVersao() {
         return versao;

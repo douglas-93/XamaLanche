@@ -24,12 +24,12 @@ public class Loja {
 
     private Boolean situacao;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Endereco> endereco;
 
     private Double pedidoMinimo;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "loja", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cardapio> cardapio;
 
     @Version

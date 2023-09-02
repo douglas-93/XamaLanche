@@ -19,7 +19,7 @@ public class Promocao {
 
     private Date dataValidade;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "promocao")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "promocao", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Produto> produtos;
 
     @Version

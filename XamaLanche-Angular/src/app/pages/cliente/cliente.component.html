@@ -21,8 +21,8 @@
     <div *ngIf='mode == ModeEnum.List' crud-list-filter-fields>
         <dx-form>
             <dxi-item [colCount]='2' itemType='group'>
-                <dxi-item [label]='{}' template='nomeTemplate'></dxi-item>
-                <dxi-item [label]='{visible: false}' template='telefoneTemplate'></dxi-item>
+                <dxi-item [label]='{text: "Nome"}' template='nomeTemplate'></dxi-item>
+                <dxi-item [label]='{text: "Telefone"}' template='telefoneTemplate'></dxi-item>
             </dxi-item>
 
             <!--      TEMPLATE      -->

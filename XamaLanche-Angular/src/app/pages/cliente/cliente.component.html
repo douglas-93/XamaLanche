@@ -11,9 +11,10 @@
 </dx-load-panel>
 
 <crud #crud
-      (filtrar)='buscaClientes()'
-      (novoCadastro)='novoCliente()'
-      (salvar)='salvarCliente()'
+      (filtrar)="doFilter()"
+      (novoCadastro)="novoCliente()"
+      (salvar)="doSave(this.model)"
+      (clear)="doClear()"
       [editToolbarTitle]="'Cadastro de Clientes'"
       [listToolbarTitle]="'Pesquisa de Clientes'"
       [mode]='mode'>
@@ -27,18 +28,21 @@
 
             <!--      TEMPLATE      -->
             <div *dxTemplate="let data of 'nomeTemplate'">
-                <dx-text-box></dx-text-box>
+                <dx-text-box [width]="500">
+
+                </dx-text-box>
             </div>
 
             <div *dxTemplate="let data of 'telefoneTemplate'">
-                <dx-text-box mask='(00) 0000-0000'>
+                <dx-text-box mask='(00) 0000-0000'
+                             [width]="250">
                 </dx-text-box>
             </div>
         </dx-form>
     </div>
 
     <div *ngIf='mode == ModeEnum.List' crud-list-result-fields>
-        <dx-data-grid [dataSource]='clientes'>
+        <dx-data-grid [dataSource]='dataSource'>
             <dxi-column dataField='nome'></dxi-column>
             <dxi-column dataField='telefone'></dxi-column>
         </dx-data-grid>
@@ -50,6 +54,7 @@
             <dxi-item title='Dados Cliente'>
                 <dx-form #formularioCliente
                          [(formData)]='cliente'
+                         [validationGroup]="'validateCliente'"
                          class='formulario'>
 
                     <dxi-item [colCount]='2' itemType='group'>
@@ -66,14 +71,16 @@
 
                     <!--      TEMPLATES   -->
                     <div *dxTemplate="let data of 'nomeTemplate'">
-                        <dx-text-box [(value)]='cliente.nome'>
+                        <dx-text-box [(value)]='model.nome'
+                                     [width]="500">
                         </dx-text-box>
                     </div>
 
                     <div *dxTemplate="let data of 'telefoneTemplate'">
                         <dx-text-box (onChange)='formatPhone($event)'
-                                     [(value)]='cliente.telefone'
-                                     [maxLength]="11">
+                                     [(value)]='model.telefone'
+                                     [maxLength]="11"
+                                     [width]="250">
                         </dx-text-box>
                     </div>
 

@@ -5,25 +5,38 @@
         <dxi-item template='localButtonTemplate'></dxi-item>
     </dxi-item>
 
-    <dxi-item [colCount]='2' itemType='group'>
-        <dxi-item [isRequired]='true'
-                  dataField='bairro'
-                  template='bairroTemplate'></dxi-item>
-        <dxi-item [isRequired]='true'
-                  dataField='rua'
-                  template='ruaTemplate'></dxi-item>
-    </dxi-item>
-
     <dxi-item [colCount]='3' itemType='group'>
         <dxi-item [isRequired]='true'
+                  dataField='rua'
+                  template='ruaTemplate'>
+
+        </dxi-item>
+
+        <dxi-item [isRequired]='true'
+                  dataField='bairro'
+                  template='bairroTemplate'>
+
+        </dxi-item>
+
+        <dxi-item [isRequired]='true'
                   dataField='numero'
-                  template='numeroTemplate'></dxi-item>
+                  template='numeroTemplate'>
+
+        </dxi-item>
+    </dxi-item>
+
+    <dxi-item [colCount]='2' itemType='group'>
+
         <dxi-item [isRequired]='true'
                   dataField='cidade'
-                  template='cidadeTemplate'></dxi-item>
+                  template='cidadeTemplate'>
+
+        </dxi-item>
         <dxi-item [isRequired]='true'
                   dataField='estado'
-                  template='estadoTemplate'></dxi-item>
+                  template='estadoTemplate'>
+
+        </dxi-item>
     </dxi-item>
 
     <!--  TEMPLATES -->
@@ -35,23 +48,28 @@
         </dx-text-box>
     </div>
     <div *dxTemplate="let data of 'bairroTemplate'">
-        <dx-text-box [(value)]='endereco.bairro'>
+        <dx-text-box [(value)]='endereco.bairro'
+        [width]="250">
         </dx-text-box>
     </div>
     <div *dxTemplate="let data of 'ruaTemplate'">
-        <dx-text-box [(value)]='endereco.rua'>
+        <dx-text-box [(value)]='endereco.rua'
+                     [width]="250">
         </dx-text-box>
     </div>
     <div *dxTemplate="let data of 'cidadeTemplate'">
-        <dx-text-box [(value)]='endereco.cidade'>
+        <dx-text-box [(value)]='endereco.cidade'
+                     [width]="250">
         </dx-text-box>
     </div>
     <div *dxTemplate="let data of 'estadoTemplate'">
-        <dx-text-box [(value)]='endereco.estado'>
+        <dx-text-box [(value)]='endereco.estado'
+                     [width]="250">
         </dx-text-box>
     </div>
     <div *dxTemplate="let data of 'numeroTemplate'">
-        <dx-text-box [(value)]='endereco.numero'>
+        <dx-text-box [(value)]='endereco.numero'
+                     [width]="100">
         </dx-text-box>
     </div>
     <div *dxTemplate="let data of 'localButtonTemplate'">

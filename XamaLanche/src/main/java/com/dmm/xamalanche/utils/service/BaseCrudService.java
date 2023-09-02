@@ -1,8 +1,8 @@
 package com.dmm.xamalanche.utils.service;
 
-import java.util.List;
+import com.dmm.xamalanche.utils.repository.BaseCrudRepository;
 
 public interface BaseCrudService<T, ID> {
 
-
+    BaseCrudRepository getRepository();
 }

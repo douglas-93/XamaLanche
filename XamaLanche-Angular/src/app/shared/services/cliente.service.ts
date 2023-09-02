@@ -7,7 +7,7 @@ import {AbstractCrudService} from "./abstract.crud.service";
 export class ClienteService extends AbstractCrudService<Cliente, any> {
 
     constructor(http: HttpClient) {
-        super(http, 'clientes');
+        super(http, 'cliente');
     }
 
 }

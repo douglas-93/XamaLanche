@@ -29,6 +29,7 @@ import {ClienteComponent} from './pages/cliente/cliente.component';
 import {ToolbarModule} from "./shared/components/toolbar/toolbar.component";
 import {CrudComponent} from "./shared/components/base-crud/crud.component";
 import {CommonModule} from "@angular/common";
+import {AppModule} from "./app.module";
 import {EnderecoFormComponent} from "./shared/components/endereco-form/endereco-form.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {PromocaoComponent} from './pages/promocao/promocao.component';

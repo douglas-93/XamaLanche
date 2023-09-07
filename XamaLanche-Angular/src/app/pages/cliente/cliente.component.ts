@@ -27,10 +27,11 @@ export class ClienteComponent extends AbstractCrud<Cliente, any>{
     formularioEndereco: EnderecoFormComponent;
 
     @ViewChild('crud', {static: false}) crud: CrudComponent;
+    @ViewChild('filterForm', {static: false}) filterForm: DxFormComponent;
+
 
     mode: ModeEnum = ModeEnum.List;
     loadingVisible: boolean = false;
-    clientes: Cliente[];
     cliente: Cliente;
     protected readonly ModeEnum = ModeEnum;
 
@@ -132,5 +133,11 @@ export class ClienteComponent extends AbstractCrud<Cliente, any>{
 
     override getMainService(): any {
         return this.mainService;
+    }
+
+
+    override doClear() {
+        this.filterForm.instance.resetValues();
+        super.doClear();
     }
 }

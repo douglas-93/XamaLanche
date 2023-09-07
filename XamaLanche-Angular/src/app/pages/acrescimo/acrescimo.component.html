@@ -1,4 +1,101 @@
-<h2 class="content-block">Acrescimo</h2>
-<div class="content-block">
-    <div class="dx-card responsive-paddings">Put your content here</div>
-</div>
+<crud #crud
+      (novoCadastro)="novoAcrescimo()"
+      [mode]="mode">
+
+    <div *ngIf="mode === ModeEnum.List" crud-list-filter-fields>
+        <dx-form #filterFieldsForm
+                 [formData]="model">
+            <dxi-item [colCount]="2" itemType="group">
+                <dxi-item [label]='{text: "Nome"}'
+                          template="nomeTemplate">
+                </dxi-item>
+                <dxi-item [label]='{text: "Ativo"}'
+                          template="ativoTemplate">
+                </dxi-item>
+            </dxi-item>
+            <dxi-item [colCount]="2" itemType="group">
+                <dxi-item [label]='{text: "Valor R$"}'
+                          template="valorTemplate">
+                </dxi-item>
+                <dxi-item [label]='{text: "Quantidade"}'
+                          template="quantidadeTemplate">
+                </dxi-item>
+            </dxi-item>
+
+            <!--             TEMPLATES           -->
+            <div *dxTemplate="let data of 'nomeTemplate'">
+                <dx-text-box width="250">
+                </dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'ativoTemplate'">
+                <dx-switch>
+                </dx-switch>
+            </div>
+            <div *dxTemplate="let data of 'valorTemplate'">
+                <dx-text-box width="250">
+                </dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'quantidadeTemplate'">
+                <dx-text-box width="250">
+                </dx-text-box>
+            </div>
+        </dx-form>
+    </div>
+
+    <div *ngIf="mode === ModeEnum.List" crud-list-result-fields>
+        <dx-data-grid [dataSource]="dataSource">
+            <dxi-column dataField="nome">
+            </dxi-column>
+            <dxi-column [cellTemplate]="'ativoTemplate'"
+                        dataField="ativo">
+            </dxi-column>
+
+            <!--     TEMPLATES     -->
+            <div *dxTemplate="let data of 'ativoTemplate'">
+                {{data.ativo ? 'Ativo' : 'Inativo'}}
+            </div>
+        </dx-data-grid>
+    </div>
+
+    <div *ngIf="mode === ModeEnum.Edit" crud-edit-template>
+        <dx-form #createForm>
+            <dxi-item [colCount]="2" itemType="group">
+                <dxi-item [label]='{text: "Nome"}'
+                          template="nomeTemplate">
+                </dxi-item>
+                <dxi-item [label]='{text: "Ativo"}'
+                          template="ativoTemplate">
+                </dxi-item>
+            </dxi-item>
+            <dxi-item [colCount]="2" itemType="group">
+                <dxi-item [label]='{text: "Valor R$"}'
+                          template="valorTemplate">
+                </dxi-item>
+                <dxi-item [label]='{text: "Quantidade"}'
+                          template="quantidadeTemplate">
+                </dxi-item>
+            </dxi-item>
+
+            <!--             TEMPLATES           -->
+            <div *dxTemplate="let data of 'nomeTemplate'">
+                <dx-text-box [(value)]="model.nome"
+                             width="250">
+                </dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'ativoTemplate'">
+                <dx-switch [(value)]="model.ativo">
+                </dx-switch>
+            </div>
+            <div *dxTemplate="let data of 'valorTemplate'">
+                <dx-text-box #valor
+                             width="250">
+                </dx-text-box>
+            </div>
+            <div *dxTemplate="let data of 'quantidadeTemplate'">
+                <dx-text-box #quantidade
+                             width="250">
+                </dx-text-box>
+            </div>
+        </dx-form>
+    </div>
+</crud>

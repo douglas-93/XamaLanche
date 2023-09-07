@@ -184,11 +184,8 @@
             </dxi-item>
 
             <dxi-item title="Endereço">
-                <dx-data-grid [dataSource]="endereco"
-                              [rowAlternationEnabled]="true" >
-
-                </dx-data-grid>
-
+                <app-endereco-form #formularioEndereco>
+                </app-endereco-form>
             </dxi-item>
         </dx-tab-panel>
     </div>
